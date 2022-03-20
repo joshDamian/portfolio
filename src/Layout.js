@@ -58,7 +58,7 @@ function Layout() {
           <button className="hidden md:block w-full"></button>
         </div>
       </aside>
-      <main className="md:ml-36 text-[#515152] pb-[47px] md:pb-0 bg-[#000000]">
+      <main className="md:ml-36 text-[#515152] pb-[48px] md:pb-0 bg-[#000000]">
         <Outlet />
       </main>
     </div>
