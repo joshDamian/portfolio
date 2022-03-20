@@ -87,15 +87,15 @@ export default function About() {
           About <span className="text-portfolio-skyblue">Me</span>
         </h3>
         <hr className="border-slate-600 w-full md:max-w-[70%] md:mx-auto" />
-        <h4 className="uppercase mt-12 md:mt-12 sm:px-6 px-5 md:px-0 md:text-center text-white text-xl md:text-[2rem] font-semibold">
+        <h4 className="uppercase mt-12 md:mt-12 sm:px-6 px-5 md:px-0 md:text-center text-white text-xl md:text-[1.7rem] font-semibold">
           Developer Experience & education
         </h4>
-        <div className="grid grid-cols-1 mt-16 mb-24 pl-9 pr-5 sm:pl-10 sm:pr-6 md:px-16 gap-16 md:grid-cols-2">
+        <div className="grid grid-cols-1 mt-14 mb-24 pl-9 pr-5 sm:pl-10 sm:pr-6 md:px-16 gap-16 md:grid-cols-2">
           {experience.map((item) => {
             return (
               <div className="flex relative self-start items-start border-l border-slate-200">
                 <div className="-mt-[10px] absolute left-[-22.5px]">
-                  <div className="h-[45px] w-[45px] text-[22px] rounded-full text-white bg-portfolio-skyblue flex items-center justify-center">
+                  <div className="h-[45px] w-[45px] text-[18px] rounded-full text-white bg-portfolio-skyblue flex items-center justify-center">
                     {item.icon ? (
                       item.icon
                     ) : (
@@ -118,7 +118,7 @@ export default function About() {
           })}
         </div>
         <hr className="border-slate-600 md:max-w-[70%] md:mx-auto" />
-        <h4 className="uppercase mt-12 md:mt-12 px-5 sm:px-6 md:px-16 md:text-center text-white text-2xl md:text-[2rem] font-semibold">
+        <h4 className="uppercase mt-12 md:mt-12 px-5 sm:px-6 md:px-16 md:text-center text-white text-2xl md:text-[1.7rem] font-semibold">
           my skills
         </h4>
         <div class="grid grid-cols-2 px-5 sm:px-6 md:px-16 text-white md:grid-cols-4 mt-16 gap-16">

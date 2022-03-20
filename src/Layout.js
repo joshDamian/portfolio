@@ -1,6 +1,7 @@
 import joshdamian from "./images/joshdamian.png";
 import { Outlet, useMatch, useResolvedPath } from "react-router-dom";
 import CustomLink from "./components/CustomLink";
+import Tilt from "react-parallax-tilt";
 
 function Layout() {
   let resolved = useResolvedPath("/");
@@ -20,13 +21,15 @@ function Layout() {
               : "py-2 flex-row items-center border-b border-slate-600 justify-start"
           } px-5 md:py-8 md:flex-col flex gap-x-[20px] gap-y-[20px] md:border-b-0 md:items-start`}
         >
-          <img
-            src={joshdamian}
-            alt="josh"
-            className={`${
-              match ? "w-[160px] mx-auto" : "w-[45px]"
-            } rounded-full md:mx-auto  md:w-full`}
-          />
+          <Tilt>
+            <img
+              src={joshdamian}
+              alt="josh"
+              className={`${
+                match ? "w-[160px] mx-auto" : "w-[45px]"
+              } rounded-full md:mx-auto  md:w-full`}
+            />
+          </Tilt>
           <div>
             <h3
               className={`text-white font-semibold ${
