@@ -17,22 +17,30 @@ function Layout() {
           className={`${
             match
               ? "py-8 flex-col"
-              : "py-4 flex-row items-center border-b border-slate-600 justify-start"
-          } px-5 md:py-8 md:flex-col flex gap-x-[40px] gap-y-[20px] md:border-b-0 md:items-start`}
+              : "py-2 flex-row items-center border-b border-slate-600 justify-start"
+          } px-5 md:py-8 md:flex-col flex gap-x-[20px] gap-y-[20px] md:border-b-0 md:items-start`}
         >
           <img
             src={joshdamian}
             alt="josh"
             className={`${
-              match ? "w-[160px] mx-auto" : "w-[65px]"
+              match ? "w-[160px] mx-auto" : "w-[45px]"
             } rounded-full md:mx-auto  md:w-full`}
           />
           <div>
-            <h3 className="text-white text-[25px] font-semibold text-center">
+            <h3
+              className={`text-white font-semibold ${
+                match ? "text-[25px] text-center" : "text-[17px]"
+              } md:text-center`}
+            >
               Josh
             </h3>
-            <h3 className="text-portfolio-gray mt-1 text-[14px] text-center">
-              Web Developer
+            <h3
+              className={`text-portfolio-gray mt-1 text-[14px] ${
+                match ? "text-center" : ""
+              } md:text-center`}
+            >
+              Software Developer
             </h3>
           </div>
         </div>

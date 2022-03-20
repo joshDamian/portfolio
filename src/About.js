@@ -25,12 +25,23 @@ export default function About() {
       ),
     },
     {
+      role: "Fullstack Developer",
+      company: "Premium Choice Services",
+      period: "JANUARY 2022 - PRESENT",
+      description: (
+        <div>
+          Building and maintaining a client-artisan request web app for Premium
+          Choice Services.
+        </div>
+      ),
+    },
+    {
       role: "Backend Developer",
       company: "Learn Share Earn",
       period: "Jun 2021 - Jul 2021",
       description: (
         <div>
-          Built the backend affiliate system for{" "}
+          Built the backend and affiliate system for{" "}
           <a
             target="_blank"
             rel="noreferrer"
@@ -69,17 +80,17 @@ export default function About() {
   return (
     <div
       data-aos="fade-right"
-      className="sm:pr-14 sm:pl-14  md:pr-16 md:pl-16 bg-gray-900 pl-9 pr-5 pt-9 md:pt-20 pb-9 md:pb-20"
+      className="md:px-16 bg-gray-900 pt-5 md:pt-20 pb-9 md:pb-20"
     >
       <div className="max-w-7xl mx-auto">
-        <h3 className="text-white text-center font-bold uppercase mb-8 md:mb-20 text-4xl md:text-[4rem]">
+        <h3 className="text-white sm:px-6 px-5 md:px-0 md:text-center font-black uppercase mb-5 md:mb-20 text-3xl md:text-[3.6rem]">
           About <span className="text-portfolio-skyblue">Me</span>
         </h3>
-        <hr className="border-slate-600 max-w-[70%] mx-auto" />
-        <h4 className="uppercase mt-8 md:mt-12 text-center text-white text-2xl md:text-[2rem] font-semibold">
+        <hr className="border-slate-600 w-full md:max-w-[70%] md:mx-auto" />
+        <h4 className="uppercase mt-12 md:mt-12 sm:px-6 px-5 md:px-0 md:text-center text-white text-xl md:text-[2rem] font-semibold">
           Developer Experience & education
         </h4>
-        <div className="grid grid-cols-1 mt-16 mb-24 gap-16 md:grid-cols-2">
+        <div className="grid grid-cols-1 mt-16 mb-24 pl-9 pr-5 sm:pl-10 sm:pr-6 md:px-16 gap-16 md:grid-cols-2">
           {experience.map((item) => {
             return (
               <div className="flex relative self-start items-start border-l border-slate-200">
@@ -106,13 +117,13 @@ export default function About() {
             );
           })}
         </div>
-        <hr className="border-slate-600 max-w-[70%] mx-auto" />
-        <h4 className="uppercase mt-8 md:mt-12 text-center text-white text-2xl md:text-[2rem] font-semibold">
+        <hr className="border-slate-600 md:max-w-[70%] md:mx-auto" />
+        <h4 className="uppercase mt-12 md:mt-12 px-5 sm:px-6 md:px-16 md:text-center text-white text-2xl md:text-[2rem] font-semibold">
           my skills
         </h4>
-        <div class="grid grid-cols-2 md:grid-cols-4 mt-16 gap-16">
+        <div class="grid grid-cols-2 px-5 sm:px-6 md:px-16 text-white md:grid-cols-4 mt-16 gap-16">
           <div>
-            <div className="h-[130px] w-[130px]">
+            <div className="h-[120px] mx-auto w-[120px]">
               <CircularProgressbar
                 value={95}
                 text="95%"
@@ -124,7 +135,128 @@ export default function About() {
                 })}
               />
             </div>
-            <h3 className="uppercase"></h3>
+            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
+              JavaScript
+            </h3>
+          </div>
+          <div>
+            <div className="h-[120px] mx-auto w-[120px]">
+              <CircularProgressbar
+                value={95}
+                text="95%"
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  pathColor: "#87CEEB",
+                  textColor: "#87CEEB",
+                  trailColor: "#475569",
+                })}
+              />
+            </div>
+            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
+              HTML & CSS
+            </h3>
+          </div>
+          <div>
+            <div className="h-[120px] mx-auto w-[120px]">
+              <CircularProgressbar
+                value={95}
+                text="95%"
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  pathColor: "#87CEEB",
+                  textColor: "#87CEEB",
+                  trailColor: "#475569",
+                })}
+              />
+            </div>
+            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
+              PHP
+            </h3>
+          </div>
+          <div>
+            <div className="h-[120px] mx-auto w-[120px]">
+              <CircularProgressbar
+                value={95}
+                text="95%"
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  pathColor: "#87CEEB",
+                  textColor: "#87CEEB",
+                  trailColor: "#475569",
+                })}
+              />
+            </div>
+            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
+              laravel
+            </h3>
+          </div>
+          <div>
+            <div className="h-[120px] mx-auto w-[120px]">
+              <CircularProgressbar
+                value={70}
+                text="70%"
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  pathColor: "#87CEEB",
+                  textColor: "#87CEEB",
+                  trailColor: "#475569",
+                })}
+              />
+            </div>
+            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
+              M<span className="lowercase">Y</span>SQL
+            </h3>
+          </div>
+          <div>
+            <div className="h-[120px] mx-auto w-[120px]">
+              <CircularProgressbar
+                value={60}
+                text="60%"
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  pathColor: "#87CEEB",
+                  textColor: "#87CEEB",
+                  trailColor: "#475569",
+                })}
+              />
+            </div>
+            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
+              REACT & VUE
+            </h3>
+          </div>
+          <div>
+            <div className="h-[120px] mx-auto w-[120px]">
+              <CircularProgressbar
+                value={50}
+                text="50%"
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  pathColor: "#87CEEB",
+                  textColor: "#87CEEB",
+                  trailColor: "#475569",
+                })}
+              />
+            </div>
+            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
+              GO
+            </h3>
+          </div>
+          <div>
+            <div className="h-[120px] mx-auto w-[120px]">
+              <CircularProgressbar
+                value={50}
+                text="50%"
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  pathColor: "#87CEEB",
+                  textColor: "#87CEEB",
+                  trailColor: "#475569",
+                })}
+              />
+            </div>
+            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
+              solidity
+            </h3>
           </div>
         </div>
       </div>
