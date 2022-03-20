@@ -6,11 +6,11 @@ function Layout() {
   let resolved = useResolvedPath("/");
   let match = useMatch({ path: resolved.pathname, end: true });
   return (
-    <div className="text-white bg-gradient">
+    <div className="text-white leading-normal bg-gradient">
       <aside
         className={`${
           match ? "rounded-bl-[110px]" : "sticky top-0"
-        } md:fixed md:rounded-bl-none md:inset-0 md:w-36 bg-[#000000]`}
+        } md:fixed md:rounded-bl-none md:inset-0 z-50 md:w-36 bg-[#000000]`}
         data-aos="fade-right"
       >
         <div
@@ -36,7 +36,7 @@ function Layout() {
             </h3>
           </div>
         </div>
-        <div className="flex fixed bottom-0 h-[47px] md:h-auto bg-black right-0 left-0 md:relative flex-row items-center md:items-start md:flex-col overflow-x-auto divide-y divide-x md:divide-x-0 md:pt-6 divide-slate-400">
+        <div className="flex fixed bottom-0 h-[47px] z-50 md:h-auto bg-black right-0 left-0 md:relative flex-row items-center md:items-start md:flex-col overflow-x-auto divide-y divide-x md:divide-x-0 md:pt-6 divide-slate-400">
           <CustomLink
             to="/"
             className="text-slate-300 w-1/3 md:w-full hover:text-portfolio-skyblue hover:font-bold transition-all duration-1000 ease-in-out border-t border-slate-400 flex flex-shrink-0 items-center px-3 h-[inherit] md:py-4 justify-center"
