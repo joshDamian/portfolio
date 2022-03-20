@@ -54,7 +54,7 @@ export default function Contact() {
           <form
             name="reachout"
             method="POST"
-            data-netlify="true"
+            data-netlify={true}
             className="max-w-lg self-start grid grid-cols-1 gap-9"
           >
             <div>
