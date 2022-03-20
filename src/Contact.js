@@ -52,11 +52,11 @@ export default function Contact() {
             </div>
           </div>
           <form
-            name="reachout"
+            name="contact"
             method="POST"
-            data-netlify={true}
             className="max-w-lg self-start grid grid-cols-1 gap-9"
           >
+            <input type="hidden" name="form-name" value="contact" />
             <div>
               <input
                 name="name"
