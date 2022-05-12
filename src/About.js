@@ -244,8 +244,8 @@ export default function About() {
           <div>
             <div className="h-[120px] mx-auto w-[120px]">
               <CircularProgressbar
-                value={50}
-                text="50%"
+                value={70}
+                text="70%"
                 styles={buildStyles({
                   strokeLinecap: "butt",
                   pathColor: "#87CEEB",
