@@ -227,23 +227,6 @@ export default function About() {
           <div>
             <div className="h-[120px] mx-auto w-[120px]">
               <CircularProgressbar
-                value={50}
-                text="50%"
-                styles={buildStyles({
-                  strokeLinecap: "butt",
-                  pathColor: "#87CEEB",
-                  textColor: "#87CEEB",
-                  trailColor: "#475569",
-                })}
-              />
-            </div>
-            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
-              GO
-            </h3>
-          </div>
-          <div>
-            <div className="h-[120px] mx-auto w-[120px]">
-              <CircularProgressbar
                 value={70}
                 text="70%"
                 styles={buildStyles({
@@ -256,6 +239,23 @@ export default function About() {
             </div>
             <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
               solidity
+            </h3>
+          </div>
+          <div>
+            <div className="h-[120px] mx-auto w-[120px]">
+              <CircularProgressbar
+                value={50}
+                text="50%"
+                styles={buildStyles({
+                  strokeLinecap: "butt",
+                  pathColor: "#87CEEB",
+                  textColor: "#87CEEB",
+                  trailColor: "#475569",
+                })}
+              />
+            </div>
+            <h3 className="uppercase mt-4 text-center text-[15px] md:text-[16px]">
+              GO
             </h3>
           </div>
         </div>
