@@ -7,3 +7,9 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
+@layer components {
+  .activity-group {
+    @apply grid grid-cols-1 gap-3 mt-5;
+  }
+}

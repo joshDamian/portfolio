@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import ActivityCard from "./components/Activity";
 export default function About() {
   const experience = [
     {
@@ -11,13 +12,67 @@ export default function About() {
       description: (
         <div>
           Building Web3 powered applications with the Dev team at{" "}
-          <a target="_blank" rel="noreferrer" className="text-blue-500" href="https://blocverse.com">
-            <FontAwesomeIcon icon={solid("up-right-from-square")} />
+          <a target="_blank" rel="noreferrer" className="text-blue-400" href="https://blocverse.com">
+            <FontAwesomeIcon icon={solid("up-right-from-square")} className="mr-1.5" />
             Blocverse
           </a>
           .
+          <ul className="activity-group">
+            <li>
+              <ActivityCard
+                icon={solid("code")}
+                activity={"Contributing to"}
+                linkHref={"https://tixhive.com"}
+                linkTitle={"TixHive"}
+              />
+            </li>
+            <li>
+              <ActivityCard
+                icon={solid("code")}
+                activity={"Building"}
+                linkHref={"https://web3gram.live"}
+                linkTitle={"Web3Gram"}
+              />
+            </li>
+            <li>
+              <ActivityCard
+                icon={solid("code")}
+                activity={"Contributing to"}
+                linkHref={"https://africanvaluables.com"}
+                linkTitle={"African Valuables"}
+              />
+            </li>
+            <li>
+              <ActivityCard
+                icon={solid("code")}
+                activity={"Contributing to"}
+                linkHref={"https://bloclearn.herokuapp.com"}
+                linkTitle={"BlocLearn"}
+              />
+            </li>
+          </ul>
         </div>
       ),
+    },
+    {
+      role: "Community Member",
+      company: "Google Developer Student's Club, Alex-Ekwueme Federal University Ndufu-Alike",
+      period: "Oct 2020 - PRESENT",
+      description: (
+        <div>
+          <ul className="activity-group">
+            <li>
+              <ActivityCard
+                activity={"Part of the facilitators of a six-week Dev/Design bootcamp at GDSC (AE-FUNAI)."}
+              />
+            </li>
+            <li>
+              <ActivityCard activity={"Contributing free resources and guidance to community members."} />
+            </li>
+          </ul>
+        </div>
+      ),
+      icon: <FontAwesomeIcon icon={solid("people-group")} />,
     },
     {
       role: "Bachelor of Engineering Degree (Electronics Engineering)",
@@ -25,11 +80,12 @@ export default function About() {
       period: "Oct 2018 - PRESENT",
       description: (
         <div>
-          Studying for an undergraduate degree at{" "}
-          <a target="_blank" rel="noreferrer" className="text-blue-500" href="https://funai.edu.ng/">
-            <FontAwesomeIcon icon={solid("up-right-from-square")} /> Alex Ekwueme Federal University
-          </a>
-          .
+          <ActivityCard
+            icon={solid("graduation-cap")}
+            activity={"Studying for an undergraduate degree at"}
+            linkHref={"https://funai.edu.ng"}
+            linkTitle={"Alex Ekwueme Federal University"}
+          />
         </div>
       ),
       icon: <FontAwesomeIcon icon={solid("graduation-cap")} />,
@@ -45,10 +101,10 @@ export default function About() {
         <h4 className="uppercase mt-12 md:mt-12 sm:px-6 px-5 md:px-0 md:text-center text-white text-xl md:text-[1.7rem] font-semibold">
           Developer Experience & education
         </h4>
-        <div className="grid grid-cols-1 mt-14 mb-24 pl-9 pr-5 sm:pl-10 sm:pr-6 md:px-16 gap-16 md:grid-cols-2">
+        <div className="grid grid-cols-1 mt-14 mb-24 pl-9 pr-5 sm:pl-10 sm:pr-6 md:px-16 gap-16 lg:gap-20 md:grid-cols-2">
           {experience.map((item) => {
             return (
-              <div className="flex relative self-start items-start border-l border-slate-200">
+              <div className="flex relative items-start border-l border-slate-200">
                 <div className="-mt-[10px] absolute left-[-22.5px]">
                   <div className="h-[45px] w-[45px] text-[18px] rounded-full text-white bg-portfolio-skyblue flex items-center justify-center">
                     {item.icon ? item.icon : <FontAwesomeIcon icon={solid("briefcase")} />}
