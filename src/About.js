@@ -42,14 +42,6 @@ export default function About() {
                 linkTitle={"African Valuables"}
               />
             </li>
-            <li>
-              <ActivityCard
-                icon={solid("code")}
-                activity={"Contributing to"}
-                linkHref={"https://bloclearn.herokuapp.com"}
-                linkTitle={"BlocLearn"}
-              />
-            </li>
           </ul>
         </div>
       ),
