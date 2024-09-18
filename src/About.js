@@ -197,6 +197,7 @@ export default function About() {
                 {projects.map((project) => (
                     <div key={project.name} className={'flex gap-5'}>
                         <span className={'shrink-0 text-white/70 pt-8'}>{project.timestamp}</span>
+                        {/* eslint-disable-next-line react/jsx-no-target-blank */}
                         <a target={project.linkIsExternal ? '_blank' : '_self'} rel={project.linkIsExternal ? 'noreferrer' : 'prev'} href={project.url}
                            className={'rounded-2xl group border-slate-600 flex flex-col gap-6 border'}>
                             <img src={project.image} className={'rounded-t-2xl'} alt={project.name}/>
