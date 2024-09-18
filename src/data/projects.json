@@ -1,0 +1,78 @@
+[{
+  "name": "GlobaChain Payment Gateway",
+  "description": "I led development of the GlobaChain Merchant Payment Gateway, a platform that enables merchants to accept payments in cryptocurrencies.",
+  "url": "#",
+  "image": "./project-images/globachain-merchant-payment-gateway.png",
+  "linkIsExternal": false,
+  "timestamp": "Jun 2024"
+},{
+  "name": "GlobaChain On/Off-ramp Widget",
+  "description": "I led development of the GlobaChain On/Off-ramp Widget, a platform that enables users to buy and sell cryptocurrencies.",
+  "url": "https://globachain.com/widget",
+  "image": "./project-images/globachain-ramps-widget.png",
+  "linkIsExternal": true,
+  "timestamp": "Dec 2023"
+},{
+  "name": "TAAS",
+  "description": "I worked on smart contract and frontend components of the TAAS dApp. TAAS is a decentralized platform for tokenizing RWA (Real World Assets), making it easy for anyone to create and manage tokenized assets.",
+  "url": "https://taas-platform.vercel.app/",
+  "image": "./project-images/taas.png",
+  "linkIsExternal": true,
+  "timestamp": "Sep 2023"
+}, {
+  "name": "Shiga Digital",
+  "description": "I worked on frontend, wallet integration and backend components of a non-custodial wallet with on/off-ramp integrations, enabling users to buy, sell, and store cryptocurrencies.",
+  "url": "#",
+  "image": "./project-images/shiga-digital.png",
+  "linkIsExternal": false,
+  "timestamp": "Jun 2023"
+},{
+  "name": "Plotpeer",
+  "description": "Developed frontend components and smart contract standards for tokenizing real estate assets on the blockchain. Led development of the Plotpeer platform, a decentralized marketplace for investing in tokenized real estate assets.",
+  "url": "#",
+  "image": "./project-images/plotpeer.png",
+  "linkIsExternal": false,
+  "timestamp": "May 2023"
+},{
+  "name": "Mintero",
+  "description": "Implemented responsive design for the Mintero landing page. Developed a proof of concept application for tokenizing real estate assets on the blockchain.",
+  "url": "https://mintero.io/",
+  "image": "./project-images/mintero.png",
+  "linkIsExternal": true,
+  "timestamp": "Feb 2023"
+},{
+  "name": "Duo Wallet",
+  "description": "Collaborated with a product team to validate the concept of a next-gen wallet that prioritizes user experience and security. Developed the landing page and a proof of concept application.",
+  "url": "https://duo-wallet.vercel.app/",
+  "image": "./project-images/duo-wallet-framed.png",
+  "linkIsExternal": true,
+  "timestamp": "Dec 2022"
+},{
+  "name": "Uwazi",
+  "description": "Collaborated with a product team to research on and develop a solution for trust-less funding of wildlife conservation projects. Developed a prototype that won the 2022 Mara Hackathon.",
+  "url": "https://www.behance.net/gallery/160185645/Uwazi-UX-Case-Study",
+  "image": "./project-images/uwazi.png",
+  "linkIsExternal": true,
+  "timestamp": "Sep 2022"
+}, {
+  "name": "TixHive",
+  "description": "A platform that enables event organizers to create, manage, and sell NFT tickets for events. Developed frontend and backend/smart contract components.",
+  "url": "https://tixhive.com",
+  "image": "./project-images/tixhive.png",
+  "linkIsExternal": true,
+  "timestamp": "Mar 2022"
+},{
+  "name": "African Valuables Collective",
+  "description": "A platform that connects African creatives to the global market. Developed the landing page and a system for token-gating premium content.",
+  "url": "https://africanvaluables.com",
+  "image": "./project-images/avc-blue.png",
+  "linkIsExternal": true,
+  "timestamp": "Feb 2022"
+},{
+  "name": "SolSmurfs",
+  "description": "An NFT project based on Smurf characters. Developed the landing page and a system for minting NFTs on Solana.",
+  "url": "https://solsmurfs.netlify.app",
+  "image": "./project-images/solsmurfs.png",
+  "linkIsExternal": true,
+  "timestamp": "Nov 2021"
+}]
