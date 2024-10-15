@@ -34,7 +34,7 @@ function Layout() {
             <h3
               className={`text-white font-semibold ${
                 match ? "text-[25px] text-center" : "text-[17px]"
-              } md:text-center`}
+              } md:text-center md:text-[17px]`}
             >
               Josh
             </h3>

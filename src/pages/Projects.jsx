@@ -10,7 +10,7 @@ export default function Projects() {
     >
       <div className="mx-auto">
         <h3 className="text-white sm:px-6 px-5 md:px-0 md:text-center font-black uppercase mb-5 md:mb-20 text-3xl md:text-[3.6rem]">
-          My <span className="text-portfolio-skyblue">Explorations</span>
+          <span className="text-portfolio-skyblue">Projects</span>
         </h3>
         <hr className="border-slate-600 w-full md:max-w-[70%] md:mx-auto" />
         <div

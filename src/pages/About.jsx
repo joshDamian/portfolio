@@ -1,6 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import ActivityCard from "../components/Activity";
+import { MY_EMAIL } from "../constants/strings";
+import React from "react";
+import { copyToClipboard } from "../utils/clipboard";
 
 const experience = [
   {
@@ -201,6 +204,20 @@ const experience = [
 ];
 
 export default function About() {
+  const [isCopied, setIsCopied] = React.useState(false);
+
+  const handleCopyEmail = async () => {
+    setIsCopied(await copyToClipboard(MY_EMAIL));
+  };
+
+  React.useEffect(() => {
+    if (isCopied) {
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 3000);
+    }
+  }, [isCopied]);
+
   return (
     <div
       data-aos="fade-right"
@@ -208,13 +225,47 @@ export default function About() {
     >
       <div className="mx-auto">
         <h3 className="text-white sm:px-6 px-5 md:px-0 md:text-center font-black uppercase mb-5 md:mb-20 text-3xl md:text-[3.6rem]">
-          About <span className="text-portfolio-skyblue">Me</span>
+          <span className="text-portfolio-skyblue">About</span>
         </h3>
-        <hr className="border-slate-600 w-full md:max-w-[70%] md:mx-auto" />
-        <h4 className="uppercase mt-12 md:mt-12 sm:px-6 px-5 md:px-0 md:text-center text-white text-xl md:text-[1.7rem] font-semibold">
+        <hr className="border-slate-600 w-full md:max-w-[calc(100%-96px)] md:mx-auto" />
+        <div
+          className={
+            "mt-12 md:mt-16 flex flex-col gap-6 w-fit mx-auto mb-16 sm:pl-10 sm:pr-6 md:px-12"
+          }
+        >
+          <h4 className="uppercase sm:px-6 px-5 md:px-0 md:text-left text-white text-xl md:text-[1.7rem] font-semibold">
+            Me
+          </h4>
+          <div
+            className={
+              "flex flex-col gap-7 sm:px-6 px-5 md:px-0 text-white leading-loose w-fit mx-auto"
+            }
+          >
+            <p>
+              I’m a software developer driven by a deep curiosity for technology
+              and a desire to create meaningful experiences through
+              design-driven development. From a young age, I’ve been fascinated
+              by how things work and how we can continually improve the tools we
+              build to make life more efficient and enjoyable. This curiosity
+              has shaped my approach to software—constantly learning, growing,
+              and seeking new ways to push boundaries.
+            </p>
+            <p>
+              At the core of my work is a passion for understanding systems,
+              both technological and universal. I believe that every aspect of
+              the world is governed by underlying systems, and mastering them is
+              the key to unlocking greater potential. For me, software
+              development is about more than just building products; it’s about
+              exploring how we can optimise the way we live and interact with
+              the world.
+            </p>
+          </div>
+        </div>
+        <hr className="border-slate-600 w-full md:max-w-[calc(100%-96px)] md:mx-auto" />
+        <h4 className="uppercase mt-12 md:mt-16 sm:px-6 px-5 md:px-12 md:text-left text-white text-xl md:text-[1.7rem] font-semibold">
           Career Milestones
         </h4>
-        <div className="grid grid-cols-1 mt-14 mb-24 pl-9 pr-5 sm:pl-10 sm:pr-6 md:px-16 gap-16 lg:gap-20 md:grid-cols-2">
+        <div className="grid grid-cols-1 mt-14 mb-16 pl-9 pr-5 sm:pl-10 sm:pr-6 md:px-16 gap-16 lg:gap-20 md:grid-cols-2">
           {experience.map((item) => {
             return (
               <div className="flex relative items-start border-l border-slate-200">
@@ -241,10 +292,58 @@ export default function About() {
             );
           })}
         </div>
-        <hr className="border-slate-600 md:max-w-[70%] md:mx-auto" />
-        <h4 className="uppercase mt-12 md:mt-12 px-5 sm:px-6 md:px-16 md:text-center text-white text-2xl md:text-[1.7rem] font-semibold">
-          Contact
-        </h4>
+        <hr className="border-slate-600 w-full md:max-w-[calc(100%-96px)] md:mx-auto" />
+        <div
+          className={
+            "mt-12 md:mt-16 flex flex-col gap-7 w-full mb-16 sm:pl-10 sm:pr-6 md:px-12"
+          }
+        >
+          <h4 className="uppercase sm:px-6 px-5 md:px-0 md:text-left text-white text-xl md:text-[1.7rem] font-semibold">
+            Contact
+          </h4>
+          <div
+            className={
+              "flex flex-col sm:px-6 px-5 md:px-0 gap-5 text-white w-full mx-auto"
+            }
+          >
+            <div
+              className={
+                "flex flex-col gap-4 sm:flex-row justify-between items-start"
+              }
+            >
+              <div className={"flex flex-col gap-1.5"}>
+                <span className={"font-medium"}>Email</span>
+                <span className={"text-white/60 text-sm"}>{MY_EMAIL}</span>
+              </div>
+              <div
+                className={
+                  "flex border text-sm border-portfolio-skyblue/70 rounded"
+                }
+              >
+                <a
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                  href={`mailto:${MY_EMAIL}`}
+                  className={
+                    "flex p-3 border-r border-portfolio-skyblue/70 items-center gap-1.5"
+                  }
+                >
+                  <FontAwesomeIcon icon={solid("envelope")} />
+                  <span>Send me an email</span>
+                </a>
+                <button
+                  onClick={handleCopyEmail}
+                  className={"p-3 flex items-center gap-1.5"}
+                >
+                  <FontAwesomeIcon
+                    icon={isCopied ? solid("check") : solid("copy")}
+                  />
+                  <span>{isCopied ? "Copied!" : "Copy"}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

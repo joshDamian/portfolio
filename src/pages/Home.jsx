@@ -7,11 +7,7 @@ function Home() {
       className="mt-12 md:mt-0 relative md:flex md:items-center md:justify-center md:min-h-[calc(min(1024px,100vh))] md:rounded-t-none bg-gradient"
     >
       <div className="pt-2.5 z-[40] md:z-auto">
-        <div
-          className={
-            "absolute hidden md:block opacity-[0.15] grid-bg inset-0 z-0"
-          }
-        />
+        <div className={"absolute opacity-[0.15] grid-bg inset-0 z-0"} />
         <div
           className={"sm:px-6 md:px-16 relative px-5 md:z-50 py-16 md:py-24"}
         >
