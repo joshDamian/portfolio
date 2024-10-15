@@ -1,12 +1,14 @@
 import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
-import "./App.css";
-import Home from "./Home";
-import About from "./About";
-import Contact from "./Contact";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Projects from "./pages/Projects";
 import AOS from "aos";
+import "./App.css";
 import "aos/dist/aos.css";
+import ProjectDetail from "./pages/ProjectDetail";
 
 AOS.init();
 
@@ -18,6 +20,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="projects/:id" element={<ProjectDetail />} />
         </Route>
       </Routes>
     </div>

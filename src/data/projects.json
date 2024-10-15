@@ -1,10 +1,23 @@
 [{
   "name": "GlobaChain Payment Gateway",
   "description": "I led development of the GlobaChain Merchant Payment Gateway, a platform that enables merchants to accept payments in cryptocurrencies.",
-  "url": "#",
-  "image": "./project-images/globachain-merchant-payment-gateway.png",
+  "url": "/projects/globachain-merchant",
+  "image": "/project-images/globachain-merchant/cover.jpeg",
   "linkIsExternal": false,
-  "timestamp": "Jun 2024"
+  "timestamp": "Jun 2024",
+  "id": "globachain-merchant",
+  "mediaFolder": "/project-images/globachain-merchant",
+  "showcase": [
+    "/showcase/app_dashboard_full.jpeg",
+    "/showcase/app_transactions_full.jpeg",
+    "/showcase/app_transactions_refunds_full.jpeg",
+    "/showcase/app_settings.jpeg",
+    "/showcase/app_settings_withdrawal-settings.jpeg",
+    "/showcase/app_withdrawals.jpeg",
+    "/showcase/payments.jpeg",
+    "/showcase/payments_collect.jpeg",
+    "/showcase/payments_refunds_request.jpeg"
+  ]
 },{
   "name": "GlobaChain On/Off-ramp Widget",
   "description": "I led development of the GlobaChain On/Off-ramp Widget, a platform that enables users to buy and sell cryptocurrencies.",
@@ -22,10 +35,22 @@
 }, {
   "name": "Shiga Digital",
   "description": "I worked on frontend, wallet integration and backend components of a non-custodial wallet with on/off-ramp integrations, enabling users to buy, sell, and store cryptocurrencies.",
-  "url": "#",
-  "image": "./project-images/shiga-digital.png",
+  "url": "/projects/shiga-digital",
+  "image": "/project-images/shiga-digital/cover.png",
   "linkIsExternal": false,
-  "timestamp": "Jun 2023"
+  "timestamp": "Jun 2023",
+  "id": "shiga-digital",
+  "mediaFolder": "/project-images/shiga-digital",
+  "showcase": [
+    "/showcase/dashboard.png",
+    "/showcase/asset_info.png",
+    "/showcase/tx_history.png",
+    "/showcase/crypto_deposit.png",
+    "/showcase/fiat_bank_deposit.png",
+    "/showcase/withdraw_beneficiary.png",
+    "/showcase/withdraw_success.png",
+    "/showcase/beneficiaries.png"
+  ]
 },{
   "name": "Plotpeer",
   "description": "Developed frontend components and smart contract standards for tokenizing real estate assets on the blockchain. Led development of the Plotpeer platform, a decentralized marketplace for investing in tokenized real estate assets.",

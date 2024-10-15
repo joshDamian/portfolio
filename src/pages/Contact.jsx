@@ -1,8 +1,8 @@
 import Tilt from "react-parallax-tilt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
-import {useState} from "react";
-import {MY_EMAIL} from "./constants/strings";
+import { useState } from "react";
+import { MY_EMAIL } from "../constants/strings";
 
 export default function Contact() {
   const [formData, setFormData] = useState({

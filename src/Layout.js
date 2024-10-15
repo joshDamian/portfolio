@@ -61,6 +61,12 @@ function Layout() {
             About
           </CustomLink>
           <CustomLink
+            to="/projects"
+            className="text-slate-300 w-1/3 md:w-full flex items-center h-[inherit] hover:text-portfolio-skyblue hover:font-bold transition-all duration-1000 ease-in-out  justify-center flex-shrink-0 py-2 md:py-4 px-3"
+          >
+            Projects
+          </CustomLink>
+          <CustomLink
             to="/contact"
             className="text-slate-300 w-1/3 md:w-full h-[inherit] flex items-center justify-center py-2 md:py-4 hover:text-portfolio-skyblue hover:font-bold transition-all duration-1000 ease-in-out flex-shrink-0 px-3"
           >
@@ -69,7 +75,9 @@ function Layout() {
           <button className="hidden md:block w-full"></button>
         </div>
       </aside>
-      <main className={`pb-[47px] text-[#515152] md:pt-0 md:ml-36 md:-mt-[100vh] md:pb-0 bg-black`}>
+      <main
+        className={`pb-[47px] text-[#515152] md:pt-0 md:ml-36 md:-mt-[100vh] md:pb-0 bg-black`}
+      >
         <Outlet />
       </main>
     </div>
