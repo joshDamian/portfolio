@@ -15,7 +15,7 @@ export default function ProjectDetail() {
   return (
     <div
       data-aos="fade-right"
-      className="md:px-16 px-5 bg-gray-900 pt-5 md:pt-20 pb-9 md:pb-20 flex flex-col gap-14"
+      className="md:px-16 px-5 sm:px-6 bg-gray-900 pt-5 md:pt-20 pb-9 md:pb-20 flex flex-col gap-14"
     >
       <section className={"flex justify-between"}>
         <div className={"flex flex-col gap-6"}>
