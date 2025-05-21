@@ -3,9 +3,9 @@
     "name": "UseAzza",
     "description": "Developed the bot service and wallet integrations for UseAzza, a tool that enables users manage their crypto assets conveniently on WhatsApp.",
     "url": "https://www.useazza.com",
-    "image": "./project-images/useazza.jpeg",
+    "image": "./project-images/useazza.png",
     "linkIsExternal": true,
-    "timestamp": "Sep 2024"
+    "timestamp": "Dec 2024"
   },
   {
     "name": "GlobaChain Payment Gateway",
