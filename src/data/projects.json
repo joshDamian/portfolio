@@ -1,7 +1,7 @@
 [
   {
     "name": "UseAzza",
-    "description": "Led the development of UseAzza, contributed to the API services for the WhatsApp bot, which has currently processed $800k+ volume across multiple blockchains and is used by 3k+ users in public beta.",
+    "description": "Led the development of Azza bot, contributed to the API services for the WhatsApp bot, which has currently processed $4M+ volume across multiple blockchains and is used by 6k+ users in public beta.",
     "url": "https://www.useazza.com",
     "image": "./project-images/useazza.png",
     "linkIsExternal": true,
@@ -99,7 +99,7 @@
   },
   {
     "name": "Uwazi",
-    "description": "Collaborated with a product team to research on and develop a solution for trust-less funding of wildlife conservation projects. Developed a prototype that won the 2022 Mara Hackathon.",
+    "description": "Led a product team to research on and develop a solution for trust-less funding of wildlife conservation projects. Developed a prototype that won the 2022 Mara Hackathon.",
     "url": "https://www.behance.net/gallery/160185645/Uwazi-UX-Case-Study",
     "image": "./project-images/uwazi.png",
     "linkIsExternal": true,

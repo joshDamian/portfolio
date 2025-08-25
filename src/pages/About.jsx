@@ -7,6 +7,65 @@ import { copyToClipboard } from "../utils/clipboard";
 
 const experience = [
   {
+    role: "Co-Founder & CTO",
+    company: "UseAzza",
+    period: "Jan 2025 – Present",
+    description: (
+      <div>
+        <div>
+          Building{" "}
+          <a
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-400"
+            href="https://www.useazza.com"
+          >
+            <FontAwesomeIcon
+              icon={solid("up-right-from-square")}
+              className="mr-1.5"
+            />
+            Azza
+          </a>{" "}
+          — the most accessible stablecoin bank for everyday people.
+        </div>
+        <ul className="activity-group">
+          <li>
+            <ActivityCard
+              activity={
+                "Driving the vision and engineering of Azza Bot — powering $4M+ in on-chain volume across 9+ blockchains, trusted by 6k+ users and counting."
+              }
+              icon={solid("laptop")}
+            />
+          </li>
+          <li>
+            <ActivityCard
+              activity={
+                "Spearheading growth campaigns that turn ideas into traction, fueling adoption and opening doors in new markets."
+              }
+              icon={solid("people-group")}
+            />
+          </li>
+          <li>
+            <ActivityCard
+              activity={
+                "Failing fast, learning faster — using every misstep as momentum to sharpen our product and strategy."
+              }
+              icon={solid("flask")}
+            />
+          </li>
+          <li>
+            <ActivityCard
+              activity={
+                "Crafting experiences people actually enjoy spending money through — where finance feels effortless, even fun."
+              }
+              icon={solid("thumbs-up")}
+            />
+          </li>
+        </ul>
+      </div>
+    ),
+  },
+  {
     role: "Lead Software Developer",
     company: "Blocverse",
     period: "Mar 2022 - Present",
