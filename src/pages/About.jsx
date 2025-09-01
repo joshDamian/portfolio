@@ -32,7 +32,7 @@ const experience = [
           <li>
             <ActivityCard
               activity={
-                "Driving the vision and engineering of Azza Bot — powering $4M+ in on-chain volume across 9+ blockchains, trusted by 6k+ users and counting."
+                "Driving the vision and engineering of Azza Bot — powering $5M+ in on-chain volume across 9+ blockchains, trusted by 6k+ users and counting."
               }
               icon={solid("laptop")}
             />
