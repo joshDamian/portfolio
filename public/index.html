@@ -34,6 +34,18 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <!--
+      v2 display + UI faces. Additive only — v1 renders from Poppins, imported
+      in src/index.css, and is unaffected. Preconnects open the TLS handshake
+      while the stylesheet is still being parsed; the axis ranges are pinned so
+      Google serves two files instead of the full variable font.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400..600&display=swap"
+    />
+    <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.

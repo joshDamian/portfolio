@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import projects from "../data/projects";
+import { v1Path } from "../constants/paths";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
@@ -36,7 +37,7 @@ export default function ProjectDetail() {
         ))}
       </section>
       <Link
-        to={"/projects"}
+        to={v1Path("/projects")}
         className={
           "text-portfolio-skyblue flex gap-3 items-center border-portfolio-skyblue py-2 px-3"
         }

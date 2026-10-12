@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { v1Path } from "../constants/paths";
 
 function Home() {
   return (
@@ -21,7 +22,7 @@ function Home() {
           </p>
           <div className="mt-9 md:mt-9 flex justify-center">
             <Link
-              to="/about"
+              to={v1Path("/about")}
               className="h-[50px] text-portfolio-skyblue uppercase border-portfolio-skyblue px-3 flex justify-center items-center text-[22px] border"
             >
               More About Me

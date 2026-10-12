@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 import projects from "../data/projects";
+import { v1Path } from "../constants/paths";
 
 export default function Projects() {
   return (
@@ -25,7 +26,7 @@ export default function Projects() {
               <a
                 target={project.linkIsExternal ? "_blank" : "_self"}
                 rel={project.linkIsExternal ? "noreferrer" : "prev"}
-                href={project.url}
+                href={project.linkIsExternal ? project.url : v1Path(project.url)}
                 className={
                   "rounded-2xl group border-slate-600 flex flex-col gap-6 border"
                 }

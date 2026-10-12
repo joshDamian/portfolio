@@ -1,4 +1,5 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { V1_BASE } from "../constants/paths";
 
 export default function CustomLink({ children, to, ...props }) {
   let resolved = useResolvedPath(to);
@@ -6,7 +7,11 @@ export default function CustomLink({ children, to, ...props }) {
 
   const currentPath = window.location.pathname;
 
-  if (!match && to !== "/" && currentPath.startsWith(to)) {
+  /* Fallback so a nested route (/v1/projects/:id) still highlights Projects.
+     Skipped for v1's home link — /v1 is a prefix of every v1 path, so the
+     naive test would mark Home current everywhere. The trailing slash also
+     stops /v1/projects from matching /v1/projects-archive. */
+  if (!match && to !== V1_BASE && currentPath.startsWith(`${to}/`)) {
     match = true;
   }
 
