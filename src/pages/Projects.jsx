@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import projects from "../data/projects";
 import { v1Path } from "../constants/paths";
 
@@ -43,7 +43,7 @@ export default function Projects() {
                     </h4>
                     {project.linkIsExternal && (
                       <FontAwesomeIcon
-                        icon={solid("external-link-alt")}
+                        icon={faExternalLinkAlt}
                         className={"text-white/70 hidden group-hover:inline"}
                       />
                     )}

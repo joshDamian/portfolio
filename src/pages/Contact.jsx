@@ -1,6 +1,6 @@
 import Tilt from "react-parallax-tilt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { MY_EMAIL } from "../constants/strings";
 import { CONTACT_STATUS_NOTE, mailtoHref, submitContact } from "../utils/contact";
@@ -61,7 +61,7 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/dev-josh/"
                 className="h-[45px] w-[45px] text-[18px] mr-5 rounded-full text-white bg-slate-700 bg-opacity-50 flex items-center justify-center"
               >
-                <FontAwesomeIcon icon={brands("linkedin")} />
+                <FontAwesomeIcon icon={faLinkedin} />
               </a>
               <a
                 target="_blank"
@@ -69,7 +69,7 @@ export default function Contact() {
                 href="https://www.github.com/joshDamian"
                 className="h-[45px] w-[45px] text-[18px] mr-5 rounded-full text-white bg-slate-700 bg-opacity-50 flex items-center justify-center"
               >
-                <FontAwesomeIcon icon={brands("github")} />
+                <FontAwesomeIcon icon={faGithub} />
               </a>
               <a
                 target="_blank"
@@ -77,7 +77,7 @@ export default function Contact() {
                 href="https://twitter.com/DevJosh__"
                 className="h-[45px] w-[45px] text-[18px] mr-5 rounded-full text-white bg-slate-700 bg-opacity-50 flex items-center justify-center"
               >
-                <FontAwesomeIcon icon={brands("twitter")} />
+                <FontAwesomeIcon icon={faTwitter} />
               </a>
             </div>
           </div>

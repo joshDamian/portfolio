@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { faBrain, faBriefcase, faChalkboardTeacher, faCheck, faCopy, faCubes, faEnvelope, faFlask, faGraduationCap, faHandsHelping, faHandshake, faLaptop, faLaptopCode, faLightbulb, faMusic, faPalette, faPeopleGroup, faRocket, faThumbsUp, faUpRightFromSquare, faUserCheck, faUserCog, faUsersGear } from "@fortawesome/free-solid-svg-icons";
 import ActivityCard from "../components/Activity";
 import { MY_EMAIL } from "../constants/strings";
 import React from "react";
@@ -21,7 +21,7 @@ const experience = [
             href="https://www.useazza.com"
           >
             <FontAwesomeIcon
-              icon={solid("up-right-from-square")}
+              icon={faUpRightFromSquare}
               className="mr-1.5"
             />
             Azza
@@ -34,7 +34,7 @@ const experience = [
               activity={
                 "Driving the vision and engineering of Azza Bot — powering $5M+ in on-chain volume across 9+ blockchains, trusted by 6k+ users and counting."
               }
-              icon={solid("laptop")}
+              icon={faLaptop}
             />
           </li>
           <li>
@@ -42,7 +42,7 @@ const experience = [
               activity={
                 "Spearheading growth campaigns that turn ideas into traction, fueling adoption and opening doors in new markets."
               }
-              icon={solid("people-group")}
+              icon={faPeopleGroup}
             />
           </li>
           <li>
@@ -50,7 +50,7 @@ const experience = [
               activity={
                 "Failing fast, learning faster — using every misstep as momentum to sharpen our product and strategy."
               }
-              icon={solid("flask")}
+              icon={faFlask}
             />
           </li>
           <li>
@@ -58,7 +58,7 @@ const experience = [
               activity={
                 "Crafting experiences people actually enjoy spending money through — where finance feels effortless, even fun."
               }
-              icon={solid("thumbs-up")}
+              icon={faThumbsUp}
             />
           </li>
         </ul>
@@ -78,24 +78,24 @@ const experience = [
           <li>
             <ActivityCard
               activity={"Leading the development team at Blocverse."}
-              icon={solid("people-group")}
+              icon={faPeopleGroup}
             />
           </li>
           <li>
             <ActivityCard
-              icon={solid("flask")}
+              icon={faFlask}
               activity={"Failing early and learning from my mistakes."}
             />
           </li>
           <li>
             <ActivityCard
-              icon={solid("thumbs-up")}
+              icon={faThumbsUp}
               activity={"Delivering software that meets client's satisfaction."}
             />
           </li>
           <li>
             <ActivityCard
-              icon={solid("palette")}
+              icon={faPalette}
               activity={"Championing design-driven development."}
             />
           </li>
@@ -119,7 +119,7 @@ const experience = [
               activity={
                 "Engaged in design-thinking sessions with a diverse group of entrepreneurs."
               }
-              icon={solid("users-gear")}
+              icon={faUsersGear}
             />
           </li>
           <li>
@@ -127,19 +127,19 @@ const experience = [
               activity={
                 "Gained insight on the importance of user-centric problem solving."
               }
-              icon={solid("user-check")}
+              icon={faUserCheck}
             />
           </li>
           <li>
             <ActivityCard
               activity={"Networked with industry experts and investors."}
-              icon={solid("handshake")}
+              icon={faHandshake}
             />
           </li>
         </ul>
       </div>
     ),
-    icon: <FontAwesomeIcon icon={solid("lightbulb")} />,
+    icon: <FontAwesomeIcon icon={faLightbulb} />,
   },
   {
     role: "Fullstack Developer",
@@ -155,7 +155,7 @@ const experience = [
           href="https://blocverse.com"
         >
           <FontAwesomeIcon
-            icon={solid("up-right-from-square")}
+            icon={faUpRightFromSquare}
             className="mr-1.5"
           />
           Blocverse
@@ -164,13 +164,13 @@ const experience = [
         <ul className="activity-group">
           <li>
             <ActivityCard
-              icon={solid("cubes")}
+              icon={faCubes}
               activity={"Built concept products and MVPs for clients."}
             />
           </li>
           <li>
             <ActivityCard
-              icon={solid("chalkboard-teacher")}
+              icon={faChalkboardTeacher}
               activity={
                 "Led the development of the Blocverse education platform. now,"
               }
@@ -180,7 +180,7 @@ const experience = [
           </li>
           <li>
             <ActivityCard
-              icon={solid("music")}
+              icon={faMusic}
               activity={"Architected a token-gated music platform for artists."}
               linkHref={"https://africanvaluables.com"}
               linkTitle={"African Valuables"}
@@ -188,7 +188,7 @@ const experience = [
           </li>
           <li>
             <ActivityCard
-              icon={solid("graduation-cap")}
+              icon={faGraduationCap}
               activity={"Learnt the ropes of Web3 development."}
             />
           </li>
@@ -213,25 +213,25 @@ const experience = [
               activity={
                 "Explored a wide range of technologies, from bare-metal to frameworks."
               }
-              icon={solid("brain")}
+              icon={faBrain}
             />
           </li>
           <li>
             <ActivityCard
               activity={"Gained my first experience with building a venture."}
-              icon={solid("user-cog")}
+              icon={faUserCog}
             />
           </li>
           <li>
             <ActivityCard
               activity={"Developed keen interests in web development."}
-              icon={solid("laptop-code")}
+              icon={faLaptopCode}
             />
           </li>
         </ul>
       </div>
     ),
-    icon: <FontAwesomeIcon icon={solid("rocket")} />,
+    icon: <FontAwesomeIcon icon={faRocket} />,
   },
   {
     role: "Community Member",
@@ -244,12 +244,12 @@ const experience = [
           <li>
             <ActivityCard
               activity={"Facilitated a six-week Dev/Design bootcamp."}
-              icon={solid("chalkboard-teacher")}
+              icon={faChalkboardTeacher}
             />
           </li>
           <li>
             <ActivityCard
-              icon={solid("hands-helping")}
+              icon={faHandsHelping}
               activity={
                 "Contributed resources and guidance to community members."
               }
@@ -258,7 +258,7 @@ const experience = [
         </ul>
       </div>
     ),
-    icon: <FontAwesomeIcon icon={solid("people-group")} />,
+    icon: <FontAwesomeIcon icon={faPeopleGroup} />,
   },
 ];
 
@@ -333,7 +333,7 @@ export default function About() {
                     {item.icon ? (
                       item.icon
                     ) : (
-                      <FontAwesomeIcon icon={solid("briefcase")} />
+                      <FontAwesomeIcon icon={faBriefcase} />
                     )}
                   </div>
                 </div>
@@ -387,7 +387,7 @@ export default function About() {
                     "flex p-3 border-r border-portfolio-skyblue/70 items-center gap-1.5"
                   }
                 >
-                  <FontAwesomeIcon icon={solid("envelope")} />
+                  <FontAwesomeIcon icon={faEnvelope} />
                   <span>Send me an email</span>
                 </a>
                 <button
@@ -395,7 +395,7 @@ export default function About() {
                   className={"p-3 flex items-center gap-1.5"}
                 >
                   <FontAwesomeIcon
-                    icon={isCopied ? solid("check") : solid("copy")}
+                    icon={isCopied ? faCheck : faCopy}
                   />
                   <span>{isCopied ? "Copied!" : "Copy"}</span>
                 </button>

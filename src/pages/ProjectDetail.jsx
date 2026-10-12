@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import projects from "../data/projects";
 import { v1Path } from "../constants/paths";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -42,7 +42,7 @@ export default function ProjectDetail() {
           "text-portfolio-skyblue flex gap-3 items-center border-portfolio-skyblue py-2 px-3"
         }
       >
-        <FontAwesomeIcon icon={solid("arrow-left")} />
+        <FontAwesomeIcon icon={faArrowLeft} />
         <span>Other Projects</span>
       </Link>
     </div>

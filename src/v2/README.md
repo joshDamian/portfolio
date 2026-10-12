@@ -27,7 +27,7 @@ data/imageSizes.js     measured intrinsic dimensions for every shipped image
 data/experience.js     the six roles from v1's About page, as plain data
 components/            Reveal, ProjectCard, Lightbox, Icon
 pages/                 Home, Projects, ProjectDetail, About, Contact
-__tests__/v2.test.jsx  24 tests: routing, prefixing, filtering, gallery, a11y
+__tests__/v2.test.jsx  26 tests: routing, prefixing, filtering, gallery, a11y
 ```
 
 Three files outside this folder:
@@ -46,7 +46,7 @@ Six link sites in v1 needed the prefix, and one probe did too:
 
 | File | Change |
 | --- | --- |
-| `src/Layout.js` | 4 nav links → `v1Path(...)`; the "am I on the home page" test now asks about `/v1`, not `/` |
+| `src/Layout.jsx` | 4 nav links → `v1Path(...)`; the "am I on the home page" test now asks about `/v1`, not `/` |
 | `src/pages/Home.jsx` | the "More About Me" link |
 | `src/pages/ProjectDetail.jsx` | the "Other Projects" link |
 | `src/pages/Projects.jsx` | internal case-study hrefs — the target comes from `projects.json`'s `url`, which stays unprefixed, so the prefix is applied at the link site |
@@ -111,10 +111,11 @@ Four more that only bit the prototype, fixed here:
 v1 and v2 share one submission path (`src/utils/contact.js`), and it is now a
 deliberate pair rather than the accident it was:
 
-1. **The form POSTs to Netlify Forms.** `public/index.html` carries a hidden
-   registration copy of the form, so Netlify's build bot creates the `contact`
-   form at deploy time; `submitContact()` sends the matching URL-encoded body
-   and the page shows "Thanks — your message is on its way."
+1. **The form POSTs to Netlify Forms.** `index.html` — the Vite entry at the
+   repo root, not `public/` — carries a hidden registration copy of the form, so
+   Netlify's build bot creates the `contact` form at deploy time;
+   `submitContact()` sends the matching URL-encoded body and the page shows
+   "Thanks — your message is on its way."
 2. **A plain `mailto:` link sits beside the button** ("or email me directly").
    It carries whatever has been typed, so a failed POST — offline, local dev,
    or any host that is not Netlify — costs nobody their message.
@@ -144,11 +145,19 @@ registered but could never receive anything.
 
 ## Verification
 
-`npm run build` compiles clean (the only warnings are pre-existing
-`react-parallax-tilt` source-map noise), and `npm test` runs 26 v2 tests: route
-resolution for both trees, the v1 link prefixing, the year filter, the gallery,
-prev/next, the lightbox, the copy button, the Netlify POST and its mailto
-fallback, and the accessible names.
+The build was migrated from Create React App to **Vite** (`vite.config.mjs`,
+`@vitejs/plugin-react`), and the test runner from Jest to **Vitest** — CRA's
+`react-scripts@5.0.0` was its final release and pinned a 2022 tree carrying 115
+`npm audit` advisories that no upgrade could clear. `npm audit` now reports 9,
+none critical, and all build-time: seven trace to Tailwind 3 (fixed only by the
+Tailwind 4 major) and two to react-router (fixed only by v7, which needs React
+18; unreachable in this app's static, non-SSR routes). The build output
+directory is still `build`, so the Netlify publish contract is unchanged.
+
+`npm run build` (Vite) compiles clean, and `npm test` (Vitest) runs 26 v2 tests:
+route resolution for both trees, the v1 link prefixing, the year filter, the
+gallery, prev/next, the lightbox, the copy button, the Netlify POST and its
+mailto fallback, and the accessible names.
 
 Caveat, stated plainly: this environment has no browser, so **the rendered
 appearance of the port is not machine-verified.** A `200` from the dev server
@@ -156,3 +165,5 @@ only means `index.html` was served — client-side route resolution is what the
 tests prove. Layout and colour are covered by tests and measured contrast
 ratios, but "does it actually look right" is a judgement only a real render can
 settle — please eyeball `/` and `/v1` before anything else is built on this.
+The Tailwind patch line also moved (3.0.23 → 3.4.19) during the migration, so
+that render check doubles as the visual confirmation nothing shifted.

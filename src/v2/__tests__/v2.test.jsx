@@ -9,7 +9,7 @@ import { MY_EMAIL } from "../../constants/strings";
 
 /* App.jsx calls AOS.init() at module scope. It is a scroll-animation library
    with nothing to say about v2's markup, and its observers are noise here. */
-jest.mock("aos", () => ({ __esModule: true, default: { init: jest.fn() } }));
+vi.mock("aos", () => ({ __esModule: true, default: { init: vi.fn() } }));
 
 function renderAt(path) {
   return render(
@@ -288,7 +288,7 @@ describe("v2 about", () => {
   });
 
   it("copies the email and confirms it", async () => {
-    const writeText = jest.fn().mockResolvedValue(undefined);
+    const writeText = vi.fn().mockResolvedValue(undefined);
     Object.assign(navigator, { clipboard: { writeText } });
 
     renderAt("/about");
@@ -301,7 +301,7 @@ describe("v2 about", () => {
 
 describe("v2 contact", () => {
   beforeEach(() => {
-    global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200 });
+    global.fetch = vi.fn().mockResolvedValue({ ok: true, status: 200 });
   });
   afterEach(() => {
     delete global.fetch;
@@ -351,9 +351,11 @@ describe("v2 contact", () => {
     fireEvent.change(screen.getByLabelText("Message"), { target: { value: "Hello there" } });
     fireEvent.click(screen.getByRole("button", { name: /Send message/ }));
 
-    expect(await screen.findByRole("status")).toHaveTextContent(
-      "Thanks — your message is on its way."
-    );
+    // Wait on the text, not the element: the status region always exists, so
+    // findByRole resolves instantly against its idle copy.
+    expect(
+      await screen.findByText("Thanks — your message is on its way.")
+    ).toBeInTheDocument();
 
     expect(global.fetch).toHaveBeenCalledTimes(1);
     const [url, options] = global.fetch.mock.calls[0];
@@ -377,12 +379,18 @@ describe("v2 contact", () => {
     global.fetch.mockResolvedValue({ ok: false, status: 500 });
 
     renderAt("/contact");
+    // jsdom enforces `required` on submit, so the mandatory fields have to be
+    // filled or the submit never fires and the handler is never exercised.
+    fireEvent.change(screen.getByLabelText("Your name"), { target: { value: "Ada" } });
+    fireEvent.change(screen.getByLabelText("Your email"), {
+      target: { value: "ada@example.com" },
+    });
     fireEvent.change(screen.getByLabelText("Message"), { target: { value: "Hello there" } });
     fireEvent.click(screen.getByRole("button", { name: /Send message/ }));
 
-    expect(await screen.findByRole("status")).toHaveTextContent(
-      "Couldn't send just now. Use the email link instead."
-    );
+    expect(
+      await screen.findByText("Couldn't send just now. Use the email link instead.")
+    ).toBeInTheDocument();
     // The message is not lost — the fallback link carries it.
     expect(screen.getByRole("link", { name: /email me directly/i })).toHaveAttribute(
       "href",
