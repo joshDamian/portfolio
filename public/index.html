@@ -57,11 +57,19 @@
     <title>Dev Josh</title>
   </head>
   <body style="background-color: black">
+    <!--
+      Hidden registration copy: Netlify's build bot discovers forms in the
+      static HTML, so this is what makes the "contact" form exist. The React
+      form POSTs a matching body (see src/utils/contact.js). bot-field is the
+      honeypot named below — it has to exist here or netlify-honeypot names a
+      field that is not there.
+    -->
     <form name="contact" netlify netlify-honeypot="bot-field" hidden>
       <input type="text" name="name" />
       <input type="email" name="email" />
       <input type="text" name="subject" />
       <textarea name="message"></textarea>
+      <input type="text" name="bot-field" />
     </form>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>

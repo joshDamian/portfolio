@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MY_EMAIL } from "../../constants/strings";
-import { mailtoHref } from "../lib/format";
+import { CONTACT_STATUS_NOTE, mailtoHref, submitContact } from "../../utils/contact";
 
 const SOCIALS = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/dev-josh/" },
@@ -14,27 +14,28 @@ const FIELDS = [
   { name: "subject", label: "Subject", type: "text", required: false },
 ];
 
+const EMPTY = { name: "", email: "", subject: "", message: "", "bot-field": "" };
+
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [sent, setSent] = useState(false);
+  const [formData, setFormData] = useState(EMPTY);
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  /* v1 does the same thing — and it is worth knowing why: the Netlify form in
-     public/index.html never receives anything, because this handler cancels the
-     submit before it can POST. The mailto handoff is what actually works. Kept
-     for parity; flagged in src/v2/README.md as a decision to revisit. */
-  const handleSubmit = (event) => {
+  /* Primary path: POST to Netlify Forms. The mailto link below the button is
+     the deliberate fallback when that POST fails — see src/utils/contact.js. */
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    window.location.href = mailtoHref(MY_EMAIL, formData);
-    setSent(true);
+    setStatus("sending");
+    try {
+      await submitContact(formData);
+      setStatus("sent");
+      setFormData(EMPTY);
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -66,6 +67,20 @@ export default function Contact() {
         </aside>
 
         <form className="form" name="contact" onSubmit={handleSubmit}>
+          {/* Honeypot: named by netlify-honeypot in public/index.html. Hidden
+              from people, irresistible to a bot that fills every input. */}
+          <p className="honeypot" aria-hidden="true">
+            <label htmlFor="v2-bot-field">Leave this field empty</label>
+            <input
+              id="v2-bot-field"
+              name="bot-field"
+              tabIndex={-1}
+              autoComplete="off"
+              value={formData["bot-field"]}
+              onChange={handleChange}
+            />
+          </p>
+
           {/* Labels rather than placeholder-only fields: v1 relies on
               placeholders, which vanish as soon as typing starts. */}
           {FIELDS.map((field) => (
@@ -94,12 +109,27 @@ export default function Contact() {
             />
           </p>
           <div className="form__foot">
-            <p className="form__note" role="status">
-              {sent ? "Opening your email client…" : "This opens your email client with the message ready to send."}
+            <p
+              className="form__note"
+              role="status"
+              data-state={status}
+            >
+              {CONTACT_STATUS_NOTE[status]}
             </p>
-            <button className="btn btn--accent" type="submit">
-              Send message
-            </button>
+            <div className="form__actions">
+              {/* The fallback. Carries whatever has been typed, so a failed
+                  POST does not cost the visitor their message. */}
+              <a className="form__alt" href={mailtoHref(MY_EMAIL, formData)}>
+                or email me directly
+              </a>
+              <button
+                className="btn btn--accent"
+                type="submit"
+                disabled={status === "sending"}
+              >
+                {status === "sending" ? "Sending…" : "Send message"}
+              </button>
+            </div>
           </div>
         </form>
       </div>

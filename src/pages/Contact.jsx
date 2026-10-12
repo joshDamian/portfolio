@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { brands } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { useState } from "react";
 import { MY_EMAIL } from "../constants/strings";
+import { CONTACT_STATUS_NOTE, mailtoHref, submitContact } from "../utils/contact";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -10,22 +11,26 @@ export default function Contact() {
     email: '',
     subject: '',
     message: '',
+    'bot-field': '',
   });
+  const [status, setStatus] = useState('idle');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Primary path: POST to Netlify Forms. The "email me directly" link beside
+  // the button is the fallback if that POST fails. See src/utils/contact.js.
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const { name, email, subject, message } = formData;
-
-    // Create the mailto link with the form data
-    const mailtoLink = `mailto:${MY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`)}`;
-
-    // Open the mailto link
-    window.location.href = mailtoLink;
+    setStatus('sending');
+    try {
+      await submitContact(formData);
+      setStatus('sent');
+      setFormData({ name: '', email: '', subject: '', message: '', 'bot-field': '' });
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -81,7 +86,23 @@ export default function Contact() {
             onSubmit={handleSubmit}
             className="max-w-lg self-start grid grid-cols-1 gap-9"
           >
-            <input type="hidden" name="form-name" value="contact" />
+            {/* Honeypot named by netlify-honeypot in public/index.html.
+                Off-screen rather than hidden so a DOM-scraping bot still fills
+                it in; submitContact() sends its value, which should be empty. */}
+            <p
+              aria-hidden="true"
+              style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}
+            >
+              <label htmlFor="bot-field">Leave this field empty</label>
+              <input
+                id="bot-field"
+                name="bot-field"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData['bot-field']}
+                onChange={handleChange}
+              />
+            </p>
             <div>
               <input
                 name="name"
@@ -129,13 +150,25 @@ export default function Contact() {
                 className="shadow appearance-none focus:border focus:border-slate-500 rounded-md w-full py-3 px-3 text-gray-300 bg-slate-700 bg-opacity-75 leading-tight focus:outline-none focus:shadow-outline"
               ></textarea>
             </div>
-            <div className="flex justify-end">
-              <button
-                className="bg-gradient font-semibold uppercase text-[17px] rounded-md text-white py-2 px-3"
-                type="submit"
-              >
-                Send Message
-              </button>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <p className="text-slate-400 text-sm" role="status">
+                {CONTACT_STATUS_NOTE[status]}
+              </p>
+              <div className="flex items-center gap-4 justify-end">
+                <a
+                  href={mailtoHref(MY_EMAIL, formData)}
+                  className="text-portfolio-skyblue text-sm underline"
+                >
+                  or email me directly
+                </a>
+                <button
+                  className="bg-gradient font-semibold uppercase text-[17px] rounded-md text-white py-2 px-3 disabled:opacity-60"
+                  type="submit"
+                  disabled={status === 'sending'}
+                >
+                  {status === 'sending' ? 'Sending…' : 'Send Message'}
+                </button>
+              </div>
             </div>
           </form>
         </div>

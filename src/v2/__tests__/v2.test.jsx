@@ -300,6 +300,13 @@ describe("v2 about", () => {
 });
 
 describe("v2 contact", () => {
+  beforeEach(() => {
+    global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200 });
+  });
+  afterEach(() => {
+    delete global.fetch;
+  });
+
   it("associates every label with its field", () => {
     renderAt("/contact");
     expect(screen.getByLabelText("Your name")).toHaveAttribute("name", "name");
@@ -315,25 +322,26 @@ describe("v2 contact", () => {
     ]);
   });
 
-  it("composes exactly the mailto the handler navigates to", () => {
-    // Unit-tested rather than observed: window.location is [Unforgeable] in
-    // jsdom, so the navigation itself cannot be intercepted.
-    const url = decodeURIComponent(
-      mailtoHref(MY_EMAIL, {
-        name: "Ada",
-        email: "ada@example.com",
-        subject: "",
-        message: "Hello there",
-      })
-    );
-    expect(url).toContain(`mailto:${MY_EMAIL}?subject=Hello&body=`);
-    expect(url).toContain("Name: Ada\nEmail: ada@example.com\n\nHello there");
+  it("composes the mailto fallback, collapsing an untouched form", () => {
+    const url = mailtoHref(MY_EMAIL, {
+      name: "Ada",
+      email: "ada@example.com",
+      subject: "",
+      message: "Hello there",
+    });
+    // URLSearchParams in, URLSearchParams out: `+` decodes back to a space.
+    const params = new URLSearchParams(url.slice(url.indexOf("?") + 1));
+    expect(params.get("subject")).toBe("Hello");
+    expect(params.get("body")).toBe("Name: Ada\nEmail: ada@example.com\n\nHello there");
+
+    // No empty "Name: / Email:" husk when nothing has been typed.
+    expect(mailtoHref(MY_EMAIL, {})).toBe(`mailto:${MY_EMAIL}?subject=Hello`);
   });
 
-  it("confirms the handoff and offers to open the mail client", () => {
+  it("posts the form to Netlify and confirms delivery", async () => {
     renderAt("/contact");
     expect(screen.getByRole("status")).toHaveTextContent(
-      "This opens your email client with the message ready to send."
+      "Sends straight to my inbox — no email client needed."
     );
 
     fireEvent.change(screen.getByLabelText("Your name"), { target: { value: "Ada" } });
@@ -343,6 +351,51 @@ describe("v2 contact", () => {
     fireEvent.change(screen.getByLabelText("Message"), { target: { value: "Hello there" } });
     fireEvent.click(screen.getByRole("button", { name: /Send message/ }));
 
-    expect(screen.getByRole("status")).toHaveTextContent("Opening your email client…");
+    expect(await screen.findByRole("status")).toHaveTextContent(
+      "Thanks — your message is on its way."
+    );
+
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    const [url, options] = global.fetch.mock.calls[0];
+    expect(url).toBe("/");
+    expect(options.method).toBe("POST");
+    expect(options.headers["Content-Type"]).toBe("application/x-www-form-urlencoded");
+
+    const body = new URLSearchParams(options.body);
+    expect(body.get("form-name")).toBe("contact");
+    expect(body.get("name")).toBe("Ada");
+    expect(body.get("email")).toBe("ada@example.com");
+    expect(body.get("message")).toBe("Hello there");
+    // The honeypot goes out empty — a bot that fills it is dropped by Netlify.
+    expect(body.get("bot-field")).toBe("");
+
+    // A successful send clears the form.
+    expect(screen.getByLabelText("Your name")).toHaveValue("");
+  });
+
+  it("surfaces the mailto fallback when the POST fails", async () => {
+    global.fetch.mockResolvedValue({ ok: false, status: 500 });
+
+    renderAt("/contact");
+    fireEvent.change(screen.getByLabelText("Message"), { target: { value: "Hello there" } });
+    fireEvent.click(screen.getByRole("button", { name: /Send message/ }));
+
+    expect(await screen.findByRole("status")).toHaveTextContent(
+      "Couldn't send just now. Use the email link instead."
+    );
+    // The message is not lost — the fallback link carries it.
+    expect(screen.getByRole("link", { name: /email me directly/i })).toHaveAttribute(
+      "href",
+      expect.stringContaining(`mailto:${MY_EMAIL}`)
+    );
+  });
+
+  it("always offers the email fallback beside the button", () => {
+    renderAt("/contact");
+    const fallback = screen.getByRole("link", { name: /email me directly/i });
+    expect(fallback).toHaveAttribute(
+      "href",
+      `mailto:${MY_EMAIL}?subject=Hello`
+    );
   });
 });

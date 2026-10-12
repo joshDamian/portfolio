@@ -22,7 +22,7 @@ version banner — on the real site it would announce a version to visitors.
 config.js              V2_BASE + v2Routes — the single routing switch
 v2.css                 the whole design system, every rule scoped under .v2-root
 V2Layout.jsx           sticky top nav, footer, <Outlet/>
-lib/format.js          asset/year/caption/gallery-span helpers, mailtoHref
+lib/format.js          asset/year/caption/gallery-span helpers
 data/imageSizes.js     measured intrinsic dimensions for every shipped image
 data/experience.js     the six roles from v1's About page, as plain data
 components/            Reveal, ProjectCard, Lightbox, Icon
@@ -30,12 +30,15 @@ pages/                 Home, Projects, ProjectDetail, About, Contact
 __tests__/v2.test.jsx  24 tests: routing, prefixing, filtering, gallery, a11y
 ```
 
-Two files outside this folder:
+Three files outside this folder:
 
 - `src/App.jsx` — the route table: v1 under `/v1`, v2 at `/`.
 - `src/constants/paths.js` — `V1_BASE` and `v1Path()`. v1's internal links go
   through it; deleting that file plus the `/v1` branch and footer link is what
   retiring v1 amounts to.
+- `src/utils/contact.js` — `submitContact()` and `mailtoHref()`, shared by v1
+  and v2 (see the contact section below). `lib/format.js` re-exports
+  `mailtoHref` from here.
 
 ## Moving v1 under the prefix
 
@@ -103,30 +106,49 @@ Four more that only bit the prototype, fixed here:
 - `public/prototype/projects.html` linked to v1's bare paths; those are v2's now.
   The prototype has served its purpose — delete the folder.
 
+## The contact form
+
+v1 and v2 share one submission path (`src/utils/contact.js`), and it is now a
+deliberate pair rather than the accident it was:
+
+1. **The form POSTs to Netlify Forms.** `public/index.html` carries a hidden
+   registration copy of the form, so Netlify's build bot creates the `contact`
+   form at deploy time; `submitContact()` sends the matching URL-encoded body
+   and the page shows "Thanks — your message is on its way."
+2. **A plain `mailto:` link sits beside the button** ("or email me directly").
+   It carries whatever has been typed, so a failed POST — offline, local dev,
+   or any host that is not Netlify — costs nobody their message.
+
+Two things that were wrong before and are fixed here: the honeypot attribute
+`netlify-honeypot="bot-field"` named a field that did not exist (there is now a
+real, off-screen `bot-field` input, and `submitContact` sends it empty), and the
+old `preventDefault` + `window.location` handoff meant the Netlify form was
+registered but could never receive anything.
+
 ## Open items
 
-1. **`preventDefault` vs Netlify.** The contact form cancels its own submit and
-   navigates to `mailto:`, so the hidden form in `public/index.html` never
-   receives a POST. v1 and v2 behave identically; one of them should go.
-2. **Poppins still blocks first paint.** `src/index.css` `@import`s nine weights
+1. **Poppins still blocks first paint.** `src/index.css` `@import`s nine weights
    plus italics, which is render-blocking for v2 too. Moving it to a `<link>` in
    `index.html` — the way v2's fonts load — is a one-line v1 change.
-3. **Captions are derived, not authored.** `captionFor()` turns
+2. **Captions are derived, not authored.** `captionFor()` turns
    `app_settings_withdrawal-settings.jpeg` into "App Settings Withdrawal". Real
    captions belong in `projects.json` as `{ src, caption }` objects.
-4. **`shiga-digital` repeats its cover as `showcase[0]`** in the data. v2 skips
+3. **`shiga-digital` repeats its cover as `showcase[0]`** in the data. v2 skips
    it; the data should not contain it.
-5. **Content edits need sign-off** — the "platform. now," fix above.
-6. **`og:url` is `https://www.devjosh.me/`**, which is now correct for v2 and
+4. **Content edits need sign-off** — the "platform. now," fix above.
+5. **`og:url` is `https://www.devjosh.me/`**, which is now correct for v2 and
    wrong for `/v1` (v1's pages share v2's social card). Moot once v1 goes.
+6. **The contact form only really submits on Netlify.** Off Netlify the POST
+   fails by design and the mailto link takes over. Worth switching to Netlify's
+   dashboard notifications so a submission actually reaches an inbox.
 
 ## Verification
 
 `npm run build` compiles clean (the only warnings are pre-existing
-`react-parallax-tilt` source-map noise), and `npm test` runs 24 v2 tests: route
+`react-parallax-tilt` source-map noise), and `npm test` runs 26 v2 tests: route
 resolution for both trees, the v1 link prefixing, the year filter, the gallery,
-prev/next, the lightbox, the copy button, the mailto handoff, and the accessible
-names.
+prev/next, the lightbox, the copy button, the Netlify POST and its mailto
+fallback, and the accessible names.
 
 Caveat, stated plainly: this environment has no browser, so **the rendered
 appearance of the port is not machine-verified.** A `200` from the dev server

@@ -67,10 +67,6 @@ export function gallerySpan(path, size) {
   return ratio >= 1.85 ? "is-wide" : "";
 }
 
-/* The contact form hands off to the OS mail client rather than posting
-   anywhere (same as v1 — see src/v2/README.md). Composing the URL is a pure
-   function so the encoding can be checked without a browser. */
-export function mailtoHref(to, { name, email, subject, message }) {
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-  return `mailto:${to}?subject=${encodeURIComponent(subject || "Hello")}&body=${body}`;
-}
+/* The contact helpers live in src/utils/contact.js now, because v1 shares
+   them — re-exported so imports of `mailtoHref` from here keep working. */
+export { mailtoHref } from "../../utils/contact";
