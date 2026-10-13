@@ -26,8 +26,8 @@ export default function Projects() {
           Projects
         </h1>
         <p className="lead" style={{ marginTop: "var(--s4)" }}>
-          {projects.length} projects between {years[years.length - 1]} and {years[0]} —{" "}
-          {caseCount} with a full case study, the rest linking to the live site.
+          {projects.length} projects from {years[years.length - 1]} to {years[0]}.{" "}
+          {caseCount} have a full case study; the rest link to the live site.
         </p>
 
         {/* A filter is a group of toggle buttons, not a set of links, so

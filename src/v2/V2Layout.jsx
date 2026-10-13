@@ -7,6 +7,7 @@ import "./v2.css";
 const NAV = [
   { to: v2Routes.home, label: "Home", end: true },
   { to: v2Routes.projects, label: "Projects" },
+  { to: v2Routes.pinboard, label: "Pinboard" },
   { to: v2Routes.about, label: "About" },
   { to: v2Routes.contact, label: "Contact" },
 ];
@@ -98,7 +99,7 @@ export default function V2Layout() {
             </nav>
           </div>
           <div className="footer__note">
-            <span>Software developer — Nigeria</span>
+            <span>Software developer, Nigeria</span>
             <span className="footer__meta">
               <a href={`mailto:${MY_EMAIL}`}>{MY_EMAIL}</a>
             </span>

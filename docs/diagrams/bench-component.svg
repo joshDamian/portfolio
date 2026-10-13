@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1720" height="1272" viewBox="0 0 1720 1272">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5b6b78"/></marker></defs>
+<rect width="1720" height="1272" fill="#f2f8fb"/>
+<text x="48" y="62" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="34" font-weight="700" fill="#0c2230" text-anchor="start">Bench · API server, component diagram</text>
+<text x="48" y="94" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="17" font-weight="400" fill="#39505f" text-anchor="start">C4 Level 3: the modules inside the API server container, and what they reach.</text>
+<rect x="870" y="120" width="240" height="110" rx="10" fill="#eaf5fa" stroke="#8fc9e0" stroke-width="2"/>
+<text x="888" y="150" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">Web application</text>
+<text x="888" y="172" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Container: Preact + htm]</text>
+<text x="888" y="198" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">The browser client.</text>
+<rect x="1410" y="120" width="250" height="130" rx="10" fill="#eceff2" stroke="#9aa6b2" stroke-width="2"/>
+<text x="1428" y="150" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#4a5560" text-anchor="start">Web push services</text>
+<text x="1428" y="172" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#4a5560" text-anchor="start">[Software system]</text>
+<text x="1428" y="198" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#5b6672" text-anchor="start">Deliver notifications to</text>
+<text x="1428" y="218" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#5b6672" text-anchor="start">paired devices.</text>
+<rect x="30" y="540" width="240" height="150" rx="10" fill="#eaf5fa" stroke="#8fc9e0" stroke-width="2"/>
+<text x="48" y="570" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">bench CLI</text>
+<text x="48" y="592" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Container: Node.js]</text>
+<text x="48" y="618" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">Most commands call</text>
+<text x="48" y="638" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">Service in-process.</text>
+<rect x="300" y="300" width="1390" height="610" rx="16" fill="#e3f1f8" stroke="#87ceeb" stroke-width="2" stroke-dasharray="10 7"/>
+<rect x="322" y="280" width="323" height="40" rx="8" fill="#1d6c96" stroke="#155578" stroke-width="1.5"/>
+<text x="338" y="307" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#fff" text-anchor="start">API server</text>
+<text x="477" y="306" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="400" fill="#d6ecf7" text-anchor="start">[Container: Node.js]</text>
+<rect x="330" y="340" width="250" height="130" rx="10" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/>
+<text x="348" y="370" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">metrics.mjs</text>
+<text x="348" y="392" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Component]</text>
+<text x="348" y="418" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">Host and process metrics</text>
+<text x="348" y="438" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">for the dashboard.</text>
+<rect x="690" y="340" width="610" height="130" rx="10" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/>
+<text x="708" y="370" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">server.mjs</text>
+<text x="708" y="392" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Component]</text>
+<text x="708" y="418" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">HTTP routes, auth and pairing, the event hub, terminals over</text>
+<text x="708" y="438" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">WebSocket, Web Push.</text>
+<rect x="1410" y="340" width="250" height="130" rx="10" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/>
+<text x="1428" y="370" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">terminal.mjs</text>
+<text x="1428" y="392" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Component]</text>
+<text x="1428" y="418" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">PTYs that outlive the</text>
+<text x="1428" y="438" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">socket that opened them.</text>
+<rect x="690" y="540" width="610" height="130" rx="10" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/>
+<text x="708" y="570" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">service.mjs</text>
+<text x="708" y="592" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Component]</text>
+<text x="708" y="618" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">Projects, tasks and sessions, and the git work each one does.</text>
+<rect x="1410" y="540" width="250" height="130" rx="10" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/>
+<text x="1428" y="570" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">providers.mjs</text>
+<text x="1428" y="592" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Component]</text>
+<text x="1428" y="618" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">Provider environments and</text>
+<text x="1428" y="638" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">model catalogs.</text>
+<rect x="330" y="740" width="250" height="130" rx="10" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/>
+<text x="348" y="770" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">store.mjs</text>
+<text x="348" y="792" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Component]</text>
+<text x="348" y="818" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">SQLite schema, migration</text>
+<text x="348" y="838" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">and every query.</text>
+<rect x="690" y="740" width="250" height="130" rx="10" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/>
+<text x="708" y="770" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">git.mjs</text>
+<text x="708" y="792" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Component]</text>
+<text x="708" y="818" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">git and gh as child</text>
+<text x="708" y="838" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">processes.</text>
+<rect x="1050" y="740" width="250" height="130" rx="10" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/>
+<text x="1068" y="770" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">runtime.mjs</text>
+<text x="1068" y="792" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Component]</text>
+<text x="1068" y="818" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">One Agent SDK query() per</text>
+<text x="1068" y="838" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">live session.</text>
+<path d="M330 984 L330 1116 A125 14 0 0 0 580 1116 L580 984" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/><ellipse cx="455" cy="984" rx="125" ry="14" fill="#ffffff" stroke="#1d6c96" stroke-width="2.5"/>
+<text x="348" y="1024" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#0c2230" text-anchor="start">Database</text>
+<text x="348" y="1046" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#1d6c96" text-anchor="start">[Container: SQLite]</text>
+<text x="348" y="1072" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">One file under</text>
+<text x="348" y="1092" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#39505f" text-anchor="start">$BENCH_ROOT.</text>
+<rect x="690" y="970" width="250" height="140" rx="10" fill="#eceff2" stroke="#9aa6b2" stroke-width="2"/>
+<text x="708" y="1000" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#4a5560" text-anchor="start">git &amp; GitHub</text>
+<text x="708" y="1022" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#4a5560" text-anchor="start">[Software system]</text>
+<text x="708" y="1048" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#5b6672" text-anchor="start">Local repositories,</text>
+<text x="708" y="1068" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#5b6672" text-anchor="start">remotes and pull</text>
+<text x="708" y="1088" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#5b6672" text-anchor="start">requests.</text>
+<rect x="1050" y="970" width="250" height="140" rx="10" fill="#eceff2" stroke="#9aa6b2" stroke-width="2"/>
+<text x="1068" y="1000" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#4a5560" text-anchor="start">Claude Code</text>
+<text x="1068" y="1022" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#4a5560" text-anchor="start">[Software system]</text>
+<text x="1068" y="1048" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#5b6672" text-anchor="start">Spawned by the Agent SDK.</text>
+<rect x="1410" y="970" width="250" height="140" rx="10" fill="#eceff2" stroke="#9aa6b2" stroke-width="2"/>
+<text x="1428" y="1000" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="18" font-weight="700" fill="#4a5560" text-anchor="start">Model providers</text>
+<text x="1428" y="1022" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="700" fill="#4a5560" text-anchor="start">[Software system]</text>
+<text x="1428" y="1048" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#5b6672" text-anchor="start">Anthropic, DeepSeek,</text>
+<text x="1428" y="1068" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="15" font-weight="400" fill="#5b6672" text-anchor="start">OpenRouter, Fireworks.</text>
+<line x1="990" y1="230" x2="990" y2="340" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1000" y="277" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="start" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">Calls the API</text>
+<text x="1000" y="295" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="400" fill="#587080" text-anchor="start" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">[JSON, WebSocket]</text>
+<line x1="1300" y1="360" x2="1450" y2="250" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1357" y="295" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="middle" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">Notifies devices</text>
+<text x="1357" y="313" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="400" fill="#587080" text-anchor="middle" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">[Web Push]</text>
+<line x1="270" y1="600" x2="690" y2="600" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="520" y="574" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="middle" paint-order="stroke" stroke="#e3f1f8" stroke-width="7" stroke-linejoin="round">Same operations</text>
+<text x="520" y="592" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="400" fill="#587080" text-anchor="middle" paint-order="stroke" stroke="#e3f1f8" stroke-width="7" stroke-linejoin="round">[in-process]</text>
+<line x1="200" y1="690" x2="350" y2="740" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="235" y="725" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="middle" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">Provider settings</text>
+<text x="235" y="743" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="400" fill="#587080" text-anchor="middle" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">[bench shell]</text>
+<line x1="690" y1="405" x2="580" y2="405" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="635" y="389" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="middle" paint-order="stroke" stroke="#e3f1f8" stroke-width="7" stroke-linejoin="round">Host metrics</text>
+<line x1="1300" y1="405" x2="1410" y2="405" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1355" y="389" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="middle" paint-order="stroke" stroke="#e3f1f8" stroke-width="7" stroke-linejoin="round">Terminals</text>
+<line x1="995" y1="470" x2="995" y2="540" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1005" y="503" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="start" paint-order="stroke" stroke="#e3f1f8" stroke-width="7" stroke-linejoin="round">Delegates every operation</text>
+<line x1="730" y1="670" x2="540" y2="740" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="625" y="699" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="middle" paint-order="stroke" stroke="#e3f1f8" stroke-width="7" stroke-linejoin="round">Reads &amp; writes</text>
+<line x1="815" y1="670" x2="815" y2="740" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="825" y="703" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="start" paint-order="stroke" stroke="#e3f1f8" stroke-width="7" stroke-linejoin="round">Branches, worktrees, merges</text>
+<line x1="1175" y1="670" x2="1175" y2="740" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1185" y="703" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="start" paint-order="stroke" stroke="#e3f1f8" stroke-width="7" stroke-linejoin="round">Starts &amp; resumes sessions</text>
+<line x1="1300" y1="805" x2="1535" y2="670" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1443.5" y="739.5" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="middle" paint-order="stroke" stroke="#e3f1f8" stroke-width="7" stroke-linejoin="round">Provider env &amp; models</text>
+<line x1="455" y1="870" x2="455" y2="970" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="465" y="918" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="start" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">Reads &amp; writes</text>
+<text x="465" y="936" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="400" fill="#587080" text-anchor="start" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">[node:sqlite]</text>
+<line x1="815" y1="870" x2="815" y2="970" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="825" y="918" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="start" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">Runs git &amp; gh</text>
+<text x="825" y="936" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="400" fill="#587080" text-anchor="start" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">[child processes]</text>
+<line x1="1175" y1="870" x2="1175" y2="970" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1185" y="918" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="start" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">Runs sessions</text>
+<text x="1185" y="936" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="400" fill="#587080" text-anchor="start" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">[Agent SDK]</text>
+<line x1="1300" y1="1040" x2="1410" y2="1040" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="1355" y="1014" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#39505f" text-anchor="middle" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">Calls models</text>
+<text x="1355" y="1032" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="13" font-weight="400" fill="#587080" text-anchor="middle" paint-order="stroke" stroke="#f2f8fb" stroke-width="7" stroke-linejoin="round">[HTTPS]</text>
+<text x="48" y="1176" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="700" fill="#1d6c96" text-anchor="start" letter-spacing="1.5">Key</text>
+<rect x="98" y="1157" width="28" height="26" rx="5" fill="#ffffff" stroke="#1d6c96" stroke-width="2"/>
+<text x="136" y="1175" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="400" fill="#39505f" text-anchor="start">Component</text>
+<rect x="237.10000000000002" y="1157" width="28" height="26" rx="5" fill="#eaf5fa" stroke="#8fc9e0" stroke-width="2"/>
+<text x="275.1" y="1175" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="400" fill="#39505f" text-anchor="start">Container</text>
+<path d="M376.20000000000005 1162 L376.20000000000005 1180 A14 5 0 0 0 404.20000000000005 1180 L404.20000000000005 1162" fill="#ffffff" stroke="#1d6c96" stroke-width="2"/><ellipse cx="390.20000000000005" cy="1162" rx="14" ry="5" fill="#ffffff" stroke="#1d6c96" stroke-width="2"/>
+<text x="414.20000000000005" y="1175" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="400" fill="#39505f" text-anchor="start">Data store</text>
+<rect x="523.2" y="1157" width="28" height="26" rx="5" fill="#eceff2" stroke="#9aa6b2" stroke-width="2"/>
+<text x="561.2" y="1175" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="400" fill="#39505f" text-anchor="start">External system</text>
+<line x1="709.7" y1="1170" x2="749.7" y2="1170" stroke="#5b6b78" stroke-width="2" marker-end="url(#ah)"/>
+<text x="761.7" y="1175" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="400" fill="#39505f" text-anchor="start">Dependency: intent, then [technology]</text>
+<text x="48" y="1220" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="400" fill="#587080" text-anchor="start">C4 model, Level 3. env.mjs (configuration) and contract.d.mts (the wire types shared with the browser) are used throughout; providers.mjs also lends env helpers to most modules. Omitted for clarity.</text>
+<text x="48" y="1242" font-family="'DejaVu Sans','Liberation Sans',Arial,sans-serif" font-size="14" font-weight="400" fill="#587080" text-anchor="start">bench pair, devices and revoke reach server.mjs over HTTP instead, as the container diagram shows.</text>
+</svg>

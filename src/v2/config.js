@@ -20,6 +20,7 @@ export const V2_BASE = "";
 export const v2Routes = {
   home: V2_BASE || "/",
   projects: `${V2_BASE}/projects`,
+  pinboard: `${V2_BASE}/pinboard`,
   about: `${V2_BASE}/about`,
   contact: `${V2_BASE}/contact`,
   caseStudy: (id) => `${V2_BASE}/projects/${id}`,

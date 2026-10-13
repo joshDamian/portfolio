@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import projects from "../../data/projects.json";
 import { v2Routes } from "../config";
 import { asset, captionFor, gallerySpan, showcaseOf, yearOf } from "../lib/format";
-import { gallerySize } from "../data/imageSizes";
+import { cardSize, gallerySize } from "../data/imageSizes";
 import Reveal from "../components/Reveal";
 import Lightbox from "../components/Lightbox";
 
@@ -20,7 +20,7 @@ export default function ProjectDetail() {
   useEffect(() => {
     if (!project) return undefined;
     const previous = document.title;
-    document.title = `${project.name} — Joshua Avoaja`;
+    document.title = `${project.name} · Joshua Avoaja`;
     return () => {
       document.title = previous;
     };
@@ -45,6 +45,7 @@ export default function ProjectDetail() {
   }
 
   const cover = asset(project.image);
+  const diagrams = (project.diagrams || []).map((item) => ({ ...item, src: asset(item.src) }));
   let images = showcaseOf(project);
   // shiga-digital repeats its cover as the first showcase entry — skip it.
   if (images.length && images[0] === cover) images = images.slice(1);
@@ -77,6 +78,21 @@ export default function ProjectDetail() {
           <p className="lead" style={{ marginTop: "var(--s5)" }}>
             {project.description}
           </p>
+          {/* A case study usually lives in-app, but Bench's is a public repo.
+              External links say so, like the cards do. */}
+          {project.url && project.linkIsExternal && (
+            <p style={{ marginTop: "var(--s4)" }}>
+              <a
+                className="btn"
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View the repository ↗
+                <span className="visually-hidden"> (opens in a new tab)</span>
+              </a>
+            </p>
+          )}
           <dl className="meta">
             <div className="meta__item">
               <dt className="meta__k">Year</dt>
@@ -88,11 +104,51 @@ export default function ProjectDetail() {
             </div>
             <div className="meta__item">
               <dt className="meta__k">Role</dt>
-              <dd className="meta__v">Development lead</dd>
+              {/* Per-project, defaulting to what every earlier case study
+                  shipped as. Bench was built solo. */}
+              <dd className="meta__v">{project.role || "Development lead"}</dd>
             </div>
           </dl>
         </div>
       </section>
+
+      {/* Only Bench has these so far, so it is opt-in per project rather than a
+          section every case study grows. Two levels of the C4 model: the
+          containers, then the components inside the API server. */}
+      {diagrams.length > 0 && (
+        <Reveal className="section wrap">
+          <h2 className="h2">How it&rsquo;s built</h2>
+          <p className="muted" style={{ fontSize: "var(--step--1)", marginTop: "var(--s2)" }}>
+            Bench runs as one Node process that holds the database, the Claude
+            sessions, the git work and the terminals. Browsers only talk to it.
+            Both diagrams use the C4 model; select one to see it full size.
+          </p>
+          <div className="diagram">
+            {diagrams.map((item) => (
+              <figure key={item.src}>
+                <button
+                  className="thumb"
+                  type="button"
+                  onClick={() => setActive({ src: item.src, caption: item.caption })}
+                  aria-label={`View the ${item.caption.toLowerCase()} full size`}
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    width={cardSize(item.src)[0]}
+                    height={cardSize(item.src)[1]}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </button>
+                <figcaption>
+                  <span>{item.caption}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </Reveal>
+      )}
 
       <Reveal className="section wrap">
         <h2 className="h2">Screens</h2>

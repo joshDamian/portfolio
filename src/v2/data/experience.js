@@ -1,9 +1,10 @@
 /* ---------------------------------------------------------------------------
    Career history for the About page.
 
-   Ported verbatim from the `experience` array in src/pages/About.jsx, with one
-   change: the JSX that used to be embedded in the data is now plain data, and
-   components are composed at render time.
+   Ported from the `experience` array in src/pages/About.jsx: the JSX that used
+   to be embedded in the data is now plain data, and the wording has been
+   rewritten in plainer language (same roles, dates, numbers and links). v1
+   keeps the original copy.
 
    `icon` values are limited to names v1 already compiles, since the
    @fortawesome macro resolves icon names at build time and an unknown name
@@ -22,24 +23,24 @@ export const EXPERIENCE = [
     intro: {
       before: "Building ",
       link: { href: "https://www.useazza.com", label: "Azza" },
-      after: " — the most accessible stablecoin bank for everyday people.",
+      after: ", a stablecoin bank for everyday people.",
     },
     activities: [
       {
         icon: "laptop",
-        text: "Driving the vision and engineering of Azza Bot — powering $5M+ in on-chain volume across 9+ blockchains, trusted by 6k+ users and counting.",
+        text: "Lead the product and engineering of Azza Bot: $5M+ in on-chain volume across 9+ blockchains, and 6k+ users.",
       },
       {
         icon: "people-group",
-        text: "Spearheading growth campaigns that turn ideas into traction, fueling adoption and opening doors in new markets.",
+        text: "Run growth campaigns to bring in new users and reach new markets.",
       },
       {
         icon: "flask",
-        text: "Failing fast, learning faster — using every misstep as momentum to sharpen our product and strategy.",
+        text: "Ship early, learn from what doesn't work, and adjust the product.",
       },
       {
         icon: "thumbs-up",
-        text: "Crafting experiences people actually enjoy spending money through — where finance feels effortless, even fun.",
+        text: "Make paying with Azza simple, and pleasant to use.",
       },
     ],
   },
@@ -47,15 +48,15 @@ export const EXPERIENCE = [
     role: "Lead Software Developer",
     company: "Blocverse",
     period: "Mar 2022 - Present",
-    intro: { before: "Contributing my efforts to make Web3 onboarding easier and smooth." },
+    intro: { before: "Making it easier for people to get started with Web3." },
     activities: [
-      { icon: "people-group", text: "Leading the development team at Blocverse." },
-      { icon: "flask", text: "Failing early and learning from my mistakes." },
+      { icon: "people-group", text: "Lead the development team." },
+      { icon: "flask", text: "Make mistakes early and learn from them." },
       {
         icon: "thumbs-up",
-        text: "Delivering software that meets client's satisfaction.",
+        text: "Deliver software clients are happy with.",
       },
-      { icon: "palette", text: "Championing design-driven development." },
+      { icon: "palette", text: "Push for designing before building." },
     ],
   },
   {
@@ -65,18 +66,18 @@ export const EXPERIENCE = [
     icon: "lightbulb",
     intro: {
       before:
-        "3 months of design-thinking experiences, networking and getting diverse perspectives. Best 3 months of 2022.",
+        "Three months of design thinking, meeting people and hearing other points of view. The best three months of my 2022.",
     },
     activities: [
       {
         icon: "users-gear",
-        text: "Engaged in design-thinking sessions with a diverse group of entrepreneurs.",
+        text: "Took part in design-thinking sessions with other founders.",
       },
       {
         icon: "user-check",
-        text: "Gained insight on the importance of user-centric problem solving.",
+        text: "Learned to start from the user's problem.",
       },
-      { icon: "handshake", text: "Networked with industry experts and investors." },
+      { icon: "handshake", text: "Met industry experts and investors." },
     ],
   },
   {
@@ -84,12 +85,12 @@ export const EXPERIENCE = [
     company: "Blocverse",
     period: "Jul 2021 - Feb 2022",
     intro: {
-      before: "Building Web3 powered applications with the Dev team at ",
+      before: "Built Web3 apps with the dev team at ",
       link: { href: "https://blocverse.com", label: "Blocverse" },
       after: ".",
     },
     activities: [
-      { icon: "cubes", text: "Built concept products and MVPs for clients." },
+      { icon: "cubes", text: "Built prototypes and MVPs for clients." },
       {
         icon: "chalkboard-teacher",
         text: "Led the development of the Blocverse education platform.",
@@ -97,10 +98,10 @@ export const EXPERIENCE = [
       },
       {
         icon: "music",
-        text: "Architected a token-gated music platform for artists.",
+        text: "Designed a token-gated music platform for artists.",
         link: { href: "https://africanvaluables.com", label: "African Valuables" },
       },
-      { icon: "graduation-cap", text: "Learnt the ropes of Web3 development." },
+      { icon: "graduation-cap", text: "Learned the basics of Web3 development." },
     ],
   },
   {
@@ -110,15 +111,15 @@ export const EXPERIENCE = [
     icon: "rocket",
     intro: {
       before:
-        "Targeted the social-commerce market. Built a social-store management system. Got some users and engagement but ultimately closed it down. My first rodeo at building anything people used.",
+        "A social-commerce startup. I built a store-management system for people selling on social media. It got some users, but we shut it down. It was the first thing I built that people used.",
     },
     activities: [
       {
         icon: "brain",
-        text: "Explored a wide range of technologies, from bare-metal to frameworks.",
+        text: "Tried a wide range of technology, from bare metal to frameworks.",
       },
-      { icon: "user-cog", text: "Gained my first experience with building a venture." },
-      { icon: "laptop-code", text: "Developed keen interests in web development." },
+      { icon: "user-cog", text: "Got my first experience of building a company." },
+      { icon: "laptop-code", text: "Got hooked on web development." },
     ],
   },
   {
@@ -128,10 +129,10 @@ export const EXPERIENCE = [
     period: "Oct 2020 - 2023",
     icon: "people-group",
     activities: [
-      { icon: "chalkboard-teacher", text: "Facilitated a six-week Dev/Design bootcamp." },
+      { icon: "chalkboard-teacher", text: "Ran a six-week dev and design bootcamp." },
       {
         icon: "hands-helping",
-        text: "Contributed resources and guidance to community members.",
+        text: "Shared resources and helped other members.",
       },
     ],
   },

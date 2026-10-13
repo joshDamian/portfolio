@@ -4,6 +4,8 @@ import { MemoryRouter } from "react-router-dom";
 import App from "../../App";
 import projects from "../../data/projects.json";
 import { EXPERIENCE } from "../data/experience";
+import PINS from "../data/pins";
+import { TYPE_LABEL } from "../components/PinCard";
 import { yearOf, yearsOf, mailtoHref } from "../lib/format";
 import { MY_EMAIL } from "../../constants/strings";
 
@@ -24,7 +26,7 @@ describe("v1 + v2 coexistence", () => {
     renderAt("/");
     expect(document.querySelector(".v2-root")).toBeTruthy();
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Hi, I'm Josh. I build software people actually use."
+      "Hi, I'm Josh. I build software people use."
     );
   });
 
@@ -129,9 +131,9 @@ describe("v2 home", () => {
   it("reads as one sentence for screen readers", () => {
     renderAt("/");
     // The space after <br /> is doing real work: without it this asserts as
-    // "Hi, I'm Josh.I build software people actually use."
+    // "Hi, I'm Josh.I build software people use."
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Hi, I'm Josh. I build software people actually use."
+      "Hi, I'm Josh. I build software people use."
     );
   });
 
@@ -140,19 +142,18 @@ describe("v2 home", () => {
     const cards = screen.getAllByRole("article");
     expect(cards).toHaveLength(3);
 
+    // Bench is the newest entry, and a case study: it routes in-app — no full
+    // reload, unlike v1's bare anchors.
+    const internal = within(cards[0]).getByRole("link", { name: "Bench" });
+    expect(internal).toHaveAttribute("href", "/projects/bench");
+    expect(internal).not.toHaveAttribute("target");
+
     // External live sites open in a new tab and say so.
-    const external = within(cards[0]).getByRole("link", { name: /UseAzza/ });
+    const external = within(cards[1]).getByRole("link", { name: /UseAzza/ });
     expect(external).toHaveAttribute("href", "https://www.useazza.com");
     expect(external).toHaveAttribute("target", "_blank");
     expect(external).toHaveAttribute("rel", "noopener noreferrer");
     expect(external).toHaveAccessibleName(/opens in a new tab/);
-
-    // Case studies route in-app — no full reload, unlike v1's bare anchors.
-    const internal = within(cards[1]).getByRole("link", {
-      name: "GlobaChain Payment Gateway",
-    });
-    expect(internal).toHaveAttribute("href", "/projects/globachain-merchant");
-    expect(internal).not.toHaveAttribute("target");
   });
 
   it("renders a measured intrinsic size on every card image", () => {
@@ -172,23 +173,23 @@ describe("v2 home", () => {
 describe("v2 projects index", () => {
   it("states the real totals and pins the year grouping", () => {
     const shiga = projects.find((p) => p.id === "shiga-digital");
-    expect(projects).toHaveLength(12);
-    expect(yearsOf(projects)).toEqual(["2024", "2023", "2022", "2021"]);
+    expect(projects).toHaveLength(13);
+    expect(yearsOf(projects)).toEqual(["2026", "2024", "2023", "2022", "2021"]);
     expect(projects.filter((p) => yearOf(p.timestamp) === "2023")).toHaveLength(5);
     expect(shiga).toBeTruthy();
 
     renderAt("/projects");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Projects");
     expect(
-      screen.getByText(/12 projects between 2021 and 2024 — 3 with a full case study/)
+      screen.getByText(/13 projects from 2021 to 2026\. 4 have a full case study/)
     ).toBeInTheDocument();
-    expect(screen.getByRole("status")).toHaveTextContent("Showing all 12 projects");
+    expect(screen.getByRole("status")).toHaveTextContent("Showing all 13 projects");
   });
 
   it("filters by year and reports what is showing", () => {
     renderAt("/projects");
     const groups = document.querySelectorAll(".yeargroup");
-    expect(groups).toHaveLength(4);
+    expect(groups).toHaveLength(5);
 
     const all = screen.getByRole("button", { name: "All" });
     expect(all).toHaveAttribute("aria-pressed", "true");
@@ -201,13 +202,15 @@ describe("v2 projects index", () => {
     expect(screen.getByRole("status")).toHaveTextContent("Showing 5 projects from 2023");
 
     // Hidden is the whole mechanism — see the CSS regression test below.
-    expect(groups[1].hidden).toBe(false);
+    // Groups follow the year order: 2026, 2024, 2023, 2022, 2021.
+    expect(groups[2].hidden).toBe(false);
     expect(groups[0].hidden).toBe(true);
-    expect(groups[2].hidden).toBe(true);
+    expect(groups[1].hidden).toBe(true);
     expect(groups[3].hidden).toBe(true);
+    expect(groups[4].hidden).toBe(true);
 
     fireEvent.click(all);
-    expect(screen.getByRole("status")).toHaveTextContent("Showing all 12 projects");
+    expect(screen.getByRole("status")).toHaveTextContent("Showing all 13 projects");
     document.querySelectorAll(".yeargroup").forEach((group) => {
       expect(group.hidden).toBe(false);
     });
@@ -240,7 +243,38 @@ describe("v2 case study", () => {
     expect(meta).toEqual([yearOf(shiga.timestamp), "7", "Development lead"]);
   });
 
-  it("wires prev/next across the three case studies, wrapping", () => {
+  it("shows Bench: solo role, Sep 2026, a public repo and 12 screens", () => {
+    const bench = projects.find((p) => p.id === "bench");
+    expect(bench).toBeTruthy();
+    expect(bench.timestamp).toBe("Sep 2026");
+    expect(bench.url).toBe("https://github.com/joshDamian/bench-ai");
+
+    renderAt("/projects/bench");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Bench");
+    // No cover repeated in the showcase data, so all twelve are a gallery.
+    expect(document.querySelectorAll(".gallery figure")).toHaveLength(12);
+
+    // The two C4 diagrams are their own section, not a thirteenth screen.
+    expect(screen.getByRole("heading", { name: /How it.s built/ })).toBeInTheDocument();
+    const diagrams = document.querySelectorAll(".diagram img");
+    expect(diagrams).toHaveLength(2);
+    expect(diagrams[0]).toHaveAttribute("src", "/project-images/bench/c4-container.png");
+    expect(diagrams[1]).toHaveAttribute("src", "/project-images/bench/c4-component.png");
+    expect(Number(diagrams[1].getAttribute("width"))).toBeGreaterThan(0);
+
+    const meta = Array.from(document.querySelectorAll(".meta__v")).map((el) => el.textContent);
+    expect(meta).toEqual(["2026", "12", "Solo builder"]);
+
+    // Bench's case study points at its public repo, so the link is external
+    // and says so.
+    const repo = screen.getByRole("link", { name: /View the repository/ });
+    expect(repo).toHaveAttribute("href", "https://github.com/joshDamian/bench-ai");
+    expect(repo).toHaveAttribute("target", "_blank");
+    expect(repo).toHaveAttribute("rel", "noopener noreferrer");
+    expect(repo).toHaveAccessibleName(/opens in a new tab/);
+  });
+
+  it("wires prev/next across the four case studies, wrapping", () => {
     renderAt("/projects/shiga-digital");
     const links = within(document.querySelector(".pager")).getAllByRole("link");
     expect(links[0]).toHaveAttribute(
@@ -279,6 +313,126 @@ describe("v2 case study", () => {
       "href",
       "/projects"
     );
+  });
+});
+
+describe("v2 pinboard", () => {
+  it("is in the nav and current on its own route", () => {
+    renderAt("/pinboard");
+    expect(screen.getByRole("link", { name: "Pinboard" })).toHaveAttribute("aria-current", "page");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Things I keep coming back to."
+    );
+  });
+
+  it("renders every pin with a readable, openable label", () => {
+    renderAt("/pinboard");
+    const items = document.querySelectorAll(".board__item");
+    expect(items).toHaveLength(PINS.length);
+    PINS.forEach((pin) => {
+      expect(
+        screen.getByRole("button", { name: `${pin.kind || TYPE_LABEL[pin.type]}: ${pin.title}. Show details` })
+      ).toBeInTheDocument();
+    });
+  });
+
+  it("straightens everything in Tidy view and back", () => {
+    renderAt("/pinboard");
+    const pinned = screen.getByRole("button", { name: "Pinned" });
+    const tidy = screen.getByRole("button", { name: "Tidy" });
+    const tilts = () => Array.from(document.querySelectorAll(".board__item")).map((el) => el.style.getPropertyValue("--r"));
+
+    expect(pinned).toHaveAttribute("aria-pressed", "true");
+    expect(tilts().some((r) => r !== "0deg")).toBe(true);
+
+    fireEvent.click(tidy);
+    expect(tidy).toHaveAttribute("aria-pressed", "true");
+    expect(document.querySelector(".board")).toHaveClass("board--tidy");
+    expect(tilts().every((r) => r === "0deg")).toBe(true);
+
+    fireEvent.click(pinned);
+    expect(tilts().some((r) => r !== "0deg")).toBe(true);
+  });
+
+  it("drags with a mouse, but never with touch, so swipes scroll the page", () => {
+    renderAt("/pinboard");
+    const item = document.querySelector(".board__item");
+    const offset = () => [item.style.getPropertyValue("--dx"), item.style.getPropertyValue("--dy")];
+
+    // A touch swipe across a card: must not move it.
+    fireEvent.pointerDown(item, { pointerType: "touch", button: 0, clientX: 100, clientY: 100, pointerId: 1 });
+    fireEvent.pointerMove(item, { pointerType: "touch", clientX: 100, clientY: 260, pointerId: 1 });
+    fireEvent.pointerUp(item, { pointerType: "touch", pointerId: 1 });
+    expect(offset()).toEqual(["0px", "0px"]);
+
+    // The same gesture with a mouse: a drag.
+    fireEvent.pointerDown(item, { pointerType: "mouse", button: 0, clientX: 100, clientY: 100, pointerId: 2 });
+    fireEvent.pointerMove(item, { pointerType: "mouse", clientX: 140, clientY: 160, pointerId: 2 });
+    fireEvent.pointerUp(item, { pointerType: "mouse", pointerId: 2 });
+    expect(offset()).toEqual(["40px", "60px"]);
+  });
+
+  it("opens the story on a plain mouse click (no pointer capture before a drag)", () => {
+    renderAt("/pinboard");
+    const item = document.querySelector(".board__item");
+    const button = item.querySelector(".pin__open");
+    // jsdom has no pointer capture, so record it: browsers retarget the click
+    // to whichever element holds capture at pointerup.
+    let captured = false;
+    item.setPointerCapture = () => { captured = true; };
+
+    fireEvent.pointerDown(button, { pointerType: "mouse", button: 0, clientX: 50, clientY: 50, pointerId: 3 });
+    fireEvent.pointerUp(button, { pointerType: "mouse", pointerId: 3 });
+    expect(captured).toBe(false);
+    fireEvent.click(captured ? item : button);
+    expect(document.querySelector(".pin-detail__title")).toBeInTheDocument();
+  });
+
+  /* jsdom applies no stylesheets and has no showModal(), so the scroll lock
+     is checked against the source — the same approach as the yeargroup rule. */
+  it("locks page scroll while a dialog is open", () => {
+    const css = fs.readFileSync("src/v2/v2.css", "utf8");
+    expect(css).toMatch(/html:has\(\.v2-root dialog\[open\]\)\s*\{[^}]*overflow:\s*hidden/);
+    expect(css).toMatch(/\.pin-detail,\s*\.v2-root \.lightbox\s*\{[^}]*overscroll-behavior:\s*contain/);
+  });
+
+  it("shows each pin's avatar or cover from a local file", () => {
+    renderAt("/pinboard");
+    const withArt = PINS.filter((p) => p.art);
+    expect(withArt.length).toBeGreaterThan(0);
+    withArt.forEach((pin) => {
+      expect(pin.art.src).toMatch(/^\/pin-images\//);
+      expect(fs.existsSync(`public${pin.art.src}`)).toBe(true);
+    });
+    const imgs = document.querySelectorAll(".board .pin__art");
+    expect(imgs).toHaveLength(withArt.length);
+    // Decorative: the title beside it already names the pin.
+    imgs.forEach((img) => expect(img).toHaveAttribute("alt", ""));
+  });
+
+  it("shuffles without losing a pin", () => {
+    renderAt("/pinboard");
+    fireEvent.click(screen.getByRole("button", { name: "Shuffle" }));
+    const ids = Array.from(document.querySelectorAll(".board__item .pin__open")).map((b) => b.getAttribute("aria-label"));
+    expect(new Set(ids).size).toBe(PINS.length);
+  });
+
+  it("opens a pin's detail view", () => {
+    renderAt("/pinboard");
+    const court = PINS.find((p) => p.id === "2bd2bth");
+    expect(document.querySelector(".pin-detail__title")).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: /Link: 2bd2bth\. Show details/ }));
+
+    // Not getByRole: jsdom has no dialog.showModal(), so the dialog never opens
+    // and stays out of the accessibility tree (same as the lightbox test).
+    expect(document.querySelector(".pin-detail__title")).toHaveTextContent(court.title);
+    expect(document.querySelector(".pin-detail__cap")).toHaveTextContent(court.caption);
+    // No story written for it, so no empty story paragraph either.
+    expect(document.querySelector(".pin-detail__story")).toBeNull();
+
+    fireEvent.click(document.querySelector(".pin-detail__close"));
+    expect(document.querySelector(".pin-detail__title")).toBeNull();
   });
 });
 
@@ -355,7 +509,7 @@ describe("v2 contact", () => {
   it("posts the form to Netlify and confirms delivery", async () => {
     renderAt("/contact");
     expect(screen.getByRole("status")).toHaveTextContent(
-      "Sends straight to my inbox — no email client needed."
+      "This goes straight to my inbox."
     );
 
     fireEvent.change(screen.getByLabelText("Your name"), { target: { value: "Ada" } });
@@ -368,7 +522,7 @@ describe("v2 contact", () => {
     // Wait on the text, not the element: the status region always exists, so
     // findByRole resolves instantly against its idle copy.
     expect(
-      await screen.findByText("Thanks — your message is on its way.")
+      await screen.findByText("Thanks, your message has been sent.")
     ).toBeInTheDocument();
 
     expect(global.fetch).toHaveBeenCalledTimes(1);
@@ -419,5 +573,22 @@ describe("v2 contact", () => {
       "href",
       `mailto:${MY_EMAIL}?subject=Hello`
     );
+  });
+});
+
+describe("scroll on navigation", () => {
+  it("starts a freshly opened route at the top", () => {
+    const scrollTo = vi.fn();
+    const original = window.scrollTo;
+    window.scrollTo = scrollTo;
+    try {
+      renderAt("/");
+      scrollTo.mockClear();
+      const nav = document.querySelector(".nav__links");
+      fireEvent.click(within(nav).getByRole("link", { name: "Projects" }));
+      expect(scrollTo).toHaveBeenCalledWith(0, 0);
+    } finally {
+      window.scrollTo = original;
+    }
   });
 });

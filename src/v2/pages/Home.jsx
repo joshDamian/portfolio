@@ -20,7 +20,7 @@ export default function Home() {
             Hi, I&apos;m Josh.
             <br /> I build software people{" "}
             <span className="hero__em">
-              actually
+              use
               {/* hand-drawn underline — decoration only */}
               <svg
                 className="hero__scribble"
@@ -31,13 +31,13 @@ export default function Home() {
               >
                 <path d="M3 12 C 40 4, 80 4, 118 9 S 176 15, 197 6" />
               </svg>
-            </span>{" "}
-            use.
+            </span>
+            .
           </h1>
           <p className="lead" style={{ marginTop: "var(--s5)" }}>
-            Design-driven development, and a long-running interest in how
-            systems work. Currently building stablecoin infrastructure for
-            everyday people.
+            I care about design as much as code, and I like knowing how systems
+            work. Right now I&apos;m building Azza, a stablecoin bank for everyday
+            people.
           </p>
           <div className="hero__actions">
             <Link className="btn btn--accent" to={v2Routes.projects}>

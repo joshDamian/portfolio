@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
+import ScrollToTop from "./ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -19,12 +20,15 @@ import V2About from "./v2/pages/About";
 import V2Contact from "./v2/pages/Contact";
 import V2Projects from "./v2/pages/Projects";
 import V2ProjectDetail from "./v2/pages/ProjectDetail";
+import V2Pinboard from "./v2/pages/Pinboard";
 
 AOS.init();
 
 function App() {
   return (
     <div>
+      {/* Both versions share it: a new route should start at the top. */}
+      <ScrollToTop />
       <Routes>
         {/* v1 — kept reachable under /v1. */}
         <Route path={V1_BASE} element={<Layout />}>
@@ -42,6 +46,7 @@ function App() {
           <Route path="contact" element={<V2Contact />} />
           <Route path="projects" element={<V2Projects />} />
           <Route path="projects/:id" element={<V2ProjectDetail />} />
+          <Route path="pinboard" element={<V2Pinboard />} />
         </Route>
       </Routes>
     </div>

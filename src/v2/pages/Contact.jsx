@@ -45,8 +45,8 @@ export default function Contact() {
         Get in touch
       </h1>
       <p className="lead" style={{ marginTop: "var(--s4)" }}>
-        I know you have something to say. I am always open to discussing new
-        projects, creative ideas, or opportunities to be part of your vision.
+        Have a project, an idea or a role in mind? Send me a message, or email
+        me directly.
       </p>
 
       <div className="contact">

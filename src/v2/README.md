@@ -10,6 +10,7 @@ reachable under a version prefix so the two can still be compared.
 | `/` | `/v1` |
 | `/projects` | `/v1/projects` |
 | `/projects/:id` | `/v1/projects/:id` |
+| `/pinboard` | — (v2 only) |
 | `/about` | `/v1/about` |
 | `/contact` | `/v1/contact` |
 
@@ -25,9 +26,11 @@ V2Layout.jsx           sticky top nav, footer, <Outlet/>
 lib/format.js          asset/year/caption/gallery-span helpers
 data/imageSizes.js     measured intrinsic dimensions for every shipped image
 data/experience.js     the six roles from v1's About page, as plain data
-components/            Reveal, ProjectCard, Lightbox, Icon
-pages/                 Home, Projects, ProjectDetail, About, Contact
-__tests__/v2.test.jsx  26 tests: routing, prefixing, filtering, gallery, a11y
+data/pins.js           the pin board's content (PLACEHOLDER — see below)
+components/            Reveal, ProjectCard, Lightbox, Icon, HeroPins,
+                       PinCard, PinDetail, PinScene
+pages/                 Home, Projects, ProjectDetail, Pinboard, About, Contact
+__tests__/v2.test.jsx  38 tests: routing, prefixing, filtering, gallery, a11y
 ```
 
 Three files outside this folder:
@@ -133,6 +136,25 @@ real, off-screen `bot-field` input, and `submitContact` sends it empty), and the
 old `preventDefault` + `window.location` handoff meant the Netlify form was
 registered but could never receive anything.
 
+## The pinboard
+
+`/pinboard` is direction A from `public/pinboard-lab/`: a loose board of
+pins, each opening a story dialog. The card types cover photos, playlists and
+albums, quotes, notes, links, books, tickets and scorelines; the real content
+today is YouTube channels, a podcast, albums and monthly playlists. Avatars and
+cover art are downloaded into `public/pin-images/` (never hotlinked). **Pinned** tilts and jitters each pin from a stable hash of its id (the
+same mess on every visit); **Tidy** straightens them; **Shuffle** reorders.
+Layout is CSS columns, not measured absolute positioning, so it reflows on its
+own. Dragging only adds a transform, so reading order, tab order and layout
+never change and every pin stays keyboard-reachable.
+
+**All pin content is placeholder**, written to sound like Josh. To add a real
+pin, append an object to `data/pins.js` (the shape is documented at the top of
+the file). Real photos go in `public/pin-images/` as
+`image: { src, width, height, alt }`; until a photo pin has one, it falls back
+to a drawn `scene` from `PinScene.jsx`. `print: "cyan"` opts a photo into the
+sun-print look.
+
 ## Open items
 
 1. **Poppins still blocks first paint.** `src/index.css` `@import`s nine weights
@@ -161,7 +183,7 @@ Tailwind 4 major) and two to react-router (fixed only by v7, which needs React
 18; unreachable in this app's static, non-SSR routes). The build output
 directory is still `build`, so the Netlify publish contract is unchanged.
 
-`npm run build` (Vite) compiles clean, and `npm test` (Vitest) runs 26 v2 tests:
+`npm run build` (Vite) compiles clean, and `npm test` (Vitest) runs 38 v2 tests:
 route resolution for both trees, the v1 link prefixing, the year filter, the
 gallery, prev/next, the lightbox, the copy button, the Netlify POST and its
 mailto fallback, and the accessible names.

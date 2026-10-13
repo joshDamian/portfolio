@@ -1,5 +1,42 @@
 [
   {
+    "name": "Bench",
+    "description": "An app for running Claude Code across your projects. You approve the edits that need a person, from your computer or your phone. I built it on my own with Preact and htm, with no build step.",
+    "url": "https://github.com/joshDamian/bench-ai",
+    "image": "/project-images/bench/cover-chrome.png",
+    "diagrams": [
+      {
+        "src": "/project-images/bench/c4-container.png",
+        "caption": "Container diagram",
+        "alt": "C4 container diagram of Bench. A developer uses the web application, which calls the API server over HTTP and WebSocket; from a phone or tablet, Tailscale forwards that traffic over HTTPS. The bench CLI starts the server, publishes it with tailscale serve and pairs devices. The API server reads and writes an SQLite database, runs Claude Code sessions through the Agent SDK, uses git and gh for branches and pull requests, and sends notifications through web push services. Claude Code is what calls the model providers."
+      },
+      {
+        "src": "/project-images/bench/c4-component.png",
+        "caption": "Component diagram",
+        "alt": "C4 component diagram of the Bench API server. The web application calls server.mjs, which serves metrics.mjs and terminal.mjs, sends web push notifications and delegates every operation to service.mjs. The bench CLI calls service.mjs in-process. service.mjs uses store.mjs for the SQLite database, git.mjs for git and gh, and runtime.mjs to start Claude Code sessions through the Agent SDK; runtime.mjs takes provider settings from providers.mjs, and Claude Code calls the model providers."
+      }
+    ],
+    "linkIsExternal": true,
+    "timestamp": "Sep 2026",
+    "id": "bench",
+    "role": "Solo builder",
+    "mediaFolder": "/project-images/bench",
+    "showcase": [
+      "/gallery/add_a_project.png",
+      "/gallery/open_a_folder.png",
+      "/gallery/project_and_tasks.png",
+      "/gallery/approve_an_edit.png",
+      "/gallery/from_your_phone.png",
+      "/gallery/everything_waiting_on_you.png",
+      "/gallery/review_the_plan.png",
+      "/gallery/task_finished.png",
+      "/gallery/review_the_changes.png",
+      "/gallery/pair_a_phone.png",
+      "/gallery/pick_a_theme.png",
+      "/gallery/dashboard.png"
+    ]
+  },
+  {
     "name": "UseAzza",
     "description": "Led the development of Azza bot, contributed to the API services for the WhatsApp bot, which has currently processed $5M+ volume across multiple blockchains and is used by 6k+ users in public beta.",
     "url": "https://www.useazza.com",

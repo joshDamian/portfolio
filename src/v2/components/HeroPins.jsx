@@ -10,10 +10,10 @@ const TIME_ZONE = "Africa/Lagos"; // WAT — one zone for all of Nigeria
 /* A light guess at what Josh is doing, by local hour. Edit freely. */
 function guess(hour) {
   if (hour < 6) return "probably asleep";
-  if (hour < 8) return "probably on the court";
-  if (hour < 18) return "probably shipping";
-  if (hour < 22) return "probably winding down";
-  return "probably still shipping";
+  if (hour < 9) return "probably just up";
+  if (hour < 18) return "probably working";
+  if (hour < 23) return "probably off for the day";
+  return "probably still up";
 }
 
 function localTime(now) {
@@ -48,7 +48,7 @@ export default function HeroPins() {
           alt="Illustrated avatar of Josh wearing headphones"
           decoding="async"
         />
-        <figcaption>me, mid-deploy</figcaption>
+        <figcaption>that&apos;s me</figcaption>
       </figure>
 
       <p className="hero-pin hero-pin--clock">

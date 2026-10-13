@@ -12,6 +12,9 @@
 --------------------------------------------------------------------------- */
 
 export const CARD_SIZES = {
+  "/project-images/bench/cover-chrome.png": [3200, 2000],
+  "/project-images/bench/c4-container.png": [3360, 2060],
+  "/project-images/bench/c4-component.png": [3440, 2544],
   "/project-images/useazza-framed.png": [4320, 2700],
   "/project-images/globachain-merchant/cover.jpeg": [5088, 3248],
   "/project-images/globachain-ramps-widget.png": [2560, 1600],
@@ -27,6 +30,18 @@ export const CARD_SIZES = {
 };
 
 export const GALLERY_SIZES = {
+  "/project-images/bench/gallery/add_a_project.png": [3200, 2000],
+  "/project-images/bench/gallery/open_a_folder.png": [3200, 2000],
+  "/project-images/bench/gallery/project_and_tasks.png": [3200, 2000],
+  "/project-images/bench/gallery/approve_an_edit.png": [3200, 2000],
+  "/project-images/bench/gallery/from_your_phone.png": [3200, 2000],
+  "/project-images/bench/gallery/everything_waiting_on_you.png": [3200, 2000],
+  "/project-images/bench/gallery/review_the_plan.png": [3200, 2000],
+  "/project-images/bench/gallery/task_finished.png": [3200, 2000],
+  "/project-images/bench/gallery/review_the_changes.png": [3200, 2000],
+  "/project-images/bench/gallery/pair_a_phone.png": [3200, 2000],
+  "/project-images/bench/gallery/pick_a_theme.png": [3200, 2000],
+  "/project-images/bench/gallery/dashboard.png": [3200, 2000],
   "/project-images/globachain-merchant/showcase/app_dashboard_full.jpeg": [2810, 2534],
   "/project-images/globachain-merchant/showcase/app_transactions_full.jpeg": [2810, 2752],
   "/project-images/globachain-merchant/showcase/app_transactions_refunds_full.jpeg": [2810, 2108],

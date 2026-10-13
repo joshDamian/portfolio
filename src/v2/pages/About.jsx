@@ -50,21 +50,16 @@ export default function About() {
       <section className="wrap" style={{ paddingBottom: "var(--s6)" }}>
         <div className="prose">
           <p>
-            I’m a software developer driven by a deep curiosity for technology
-            and a desire to create meaningful experiences through design-driven
-            development. From a young age, I’ve been fascinated by how things
-            work and how we can continually improve the tools we build to make
-            life more efficient and enjoyable. This curiosity has shaped my
-            approach to software—constantly learning, growing, and seeking new
-            ways to push boundaries.
+            I’m a software developer. I’ve wanted to know how things work for as
+            long as I can remember, and I like building tools that make everyday
+            life a little easier. I design first: I work out how something should
+            feel to use, then build it. I’m still learning all the time.
           </p>
           <p>
-            At the core of my work is a passion for understanding systems, both
-            technological and universal. I believe that every aspect of the world
-            is governed by underlying systems, and mastering them is the key to
-            unlocking greater potential. For me, software development is about
-            more than just building products; it’s about exploring how we can
-            optimise the way we live and interact with the world.
+            I’m interested in systems, in software and outside it. Most things
+            run on rules you can learn, and once you understand them you can
+            change them. Software is how I try to make the way we live and work
+            run a bit better.
           </p>
         </div>
       </section>
@@ -79,7 +74,7 @@ export default function About() {
               </span>
               <p className="xp__when">{item.period}</p>
               <h3 className="xp__role">
-                {item.role} <span className="xp__co">— {item.company}</span>
+                {item.role}, <span className="xp__co">{item.company}</span>
               </h3>
               <Intro intro={item.intro} />
               {item.activities && (

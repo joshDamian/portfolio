@@ -50,8 +50,8 @@ export async function submitContact(fields) {
 }
 
 export const CONTACT_STATUS_NOTE = {
-  idle: "Sends straight to my inbox — no email client needed.",
+  idle: "This goes straight to my inbox.",
   sending: "Sending…",
-  sent: "Thanks — your message is on its way.",
+  sent: "Thanks, your message has been sent.",
   error: "Couldn't send just now. Use the email link instead.",
 };
