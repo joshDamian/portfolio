@@ -17,8 +17,8 @@ function Home() {
             <br /> A Software Developer.
           </h1>
           <p className="text-slate-300 text-center mt-9 md:mt-9 text-[13px] lg:text-[18px]">
-            I'm a Software Developer passionate about building great experiences
-            using software.
+            I build software, and I care as much about how it feels to use as
+            how it works.
           </p>
           <div className="mt-9 md:mt-9 flex justify-center">
             <Link

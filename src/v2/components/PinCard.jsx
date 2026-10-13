@@ -14,6 +14,7 @@ export const TYPE_LABEL = {
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 export function pinDate(ym) {
+  if (!ym) return "";
   const [year, month] = ym.split("-").map(Number);
   return `${MONTHS[month - 1]} ${year}`;
 }
@@ -51,7 +52,12 @@ export function PinBody({ pin }) {
     case "photo":
       return (
         <>
-          <div className="pin__media">
+          {/* A real photo keeps its own shape (portrait, landscape or a 2.39:1
+              film frame); the drawn placeholder scenes stay 4:3. */}
+          <div
+            className="pin__media"
+            style={pin.image ? { aspectRatio: `${pin.image.width} / ${pin.image.height}` } : undefined}
+          >
             {pin.image ? (
               <img
                 src={pin.image.src}
@@ -60,6 +66,7 @@ export function PinBody({ pin }) {
                 alt={pin.image.alt || pin.title}
                 loading="lazy"
                 decoding="async"
+                draggable="false"
               />
             ) : (
               <PinScene name={pin.scene} />
@@ -171,7 +178,14 @@ export function PinBody({ pin }) {
 
     case "book":
       return (
-        <div className="pin__book">
+        <div
+          className={`pin__book${pin.cover?.motif ? ` pin__book--${pin.cover.motif}` : ""}`}
+          style={
+            pin.cover
+              ? { "--book-bg": pin.cover.bg, "--book-fg": pin.cover.fg, "--book-sub": pin.cover.sub || pin.cover.fg }
+              : undefined
+          }
+        >
           <span className="pin__book-t">{pin.title}</span>
           <span className="pin__book-a">{pin.author}</span>
         </div>
@@ -179,9 +193,9 @@ export function PinBody({ pin }) {
 
     case "ticket":
       return (
-        <div className="pin__ticket">
+        <div className={`pin__ticket${pin.theme === "dark" ? " pin__ticket--dark" : ""}`}>
           <div className="pin__ticket-main">
-            <span className="pin__ticket-adm">Admit one</span>
+            <span className="pin__ticket-adm">Admit one{pin.number ? ` · ${pin.number}` : ""}</span>
             <span className="pin__ticket-t">{pin.title}</span>
             {pin.place && <span className="pin__ticket-p">{pin.place}</span>}
           </div>

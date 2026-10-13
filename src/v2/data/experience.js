@@ -3,16 +3,16 @@
 
    Ported from the `experience` array in src/pages/About.jsx: the JSX that used
    to be embedded in the data is now plain data, and the wording has been
-   rewritten in plainer language (same roles, dates, numbers and links). v1
-   keeps the original copy.
+   rewritten in plainer language (same roles, dates, numbers and links). The
+   same rewrite was applied to v1's About page.
 
    `icon` values are limited to names v1 already compiles, since the
    @fortawesome macro resolves icon names at build time and an unknown name
    fails the build.
 
-   One content fix: v1 reads "Led the development of the Blocverse education
-   platform. now," — a truncated sentence with a stray "now,". Rendered here
-   as "platform." Flagging it rather than silently rewriting copy.
+   One content fix, applied here and in v1: the Blocverse education bullet
+   read "Led the development of the Blocverse education platform. now," — a
+   truncated sentence with a stray "now,". Both now end at "platform."
 --------------------------------------------------------------------------- */
 
 export const EXPERIENCE = [
@@ -28,7 +28,7 @@ export const EXPERIENCE = [
     activities: [
       {
         icon: "laptop",
-        text: "Lead the product and engineering of Azza Bot: $5M+ in on-chain volume across 9+ blockchains, and 6k+ users.",
+        text: "Lead the product and engineering of Azza Bot: $10M+ in on-chain volume across 9+ blockchains, and 13k+ users.",
       },
       {
         icon: "people-group",

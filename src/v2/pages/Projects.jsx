@@ -6,7 +6,6 @@ import ProjectCard from "../components/ProjectCard";
 export default function Projects() {
   const [filter, setFilter] = useState("all");
   const years = yearsOf(projects);
-  const caseCount = projects.filter((project) => project.id).length;
 
   const groups = years.map((year) => ({
     year,
@@ -26,8 +25,7 @@ export default function Projects() {
           Projects
         </h1>
         <p className="lead" style={{ marginTop: "var(--s4)" }}>
-          {projects.length} projects from {years[years.length - 1]} to {years[0]}.{" "}
-          {caseCount} have a full case study; the rest link to the live site.
+          Things I&apos;ve built since {years[years.length - 1]}.
         </p>
 
         {/* A filter is a group of toggle buttons, not a set of links, so

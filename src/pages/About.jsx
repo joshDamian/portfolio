@@ -25,14 +25,14 @@ const experience = [
               className="mr-1.5"
             />
             Azza
-          </a>{" "}
-          — the most accessible stablecoin bank for everyday people.
+          </a>
+          , a stablecoin bank for everyday people.
         </div>
         <ul className="activity-group">
           <li>
             <ActivityCard
               activity={
-                "Driving the vision and engineering of Azza Bot — powering $5M+ in on-chain volume across 9+ blockchains, trusted by 6k+ users and counting."
+                "Lead the product and engineering of Azza Bot: $10M+ in on-chain volume across 9+ blockchains, and 13k+ users."
               }
               icon={faLaptop}
             />
@@ -40,7 +40,7 @@ const experience = [
           <li>
             <ActivityCard
               activity={
-                "Spearheading growth campaigns that turn ideas into traction, fueling adoption and opening doors in new markets."
+                "Run growth campaigns to bring in new users and reach new markets."
               }
               icon={faPeopleGroup}
             />
@@ -48,7 +48,7 @@ const experience = [
           <li>
             <ActivityCard
               activity={
-                "Failing fast, learning faster — using every misstep as momentum to sharpen our product and strategy."
+                "Ship early, learn from what doesn't work, and adjust the product."
               }
               icon={faFlask}
             />
@@ -56,7 +56,7 @@ const experience = [
           <li>
             <ActivityCard
               activity={
-                "Crafting experiences people actually enjoy spending money through — where finance feels effortless, even fun."
+                "Make paying with Azza simple, and pleasant to use."
               }
               icon={faThumbsUp}
             />
@@ -72,31 +72,31 @@ const experience = [
     description: (
       <div>
         <div>
-          Contributing my efforts to make Web3 onboarding easier and smooth.
+          Making it easier for people to get started with Web3.
         </div>
         <ul className="activity-group">
           <li>
             <ActivityCard
-              activity={"Leading the development team at Blocverse."}
+              activity={"Lead the development team."}
               icon={faPeopleGroup}
             />
           </li>
           <li>
             <ActivityCard
               icon={faFlask}
-              activity={"Failing early and learning from my mistakes."}
+              activity={"Make mistakes early and learn from them."}
             />
           </li>
           <li>
             <ActivityCard
               icon={faThumbsUp}
-              activity={"Delivering software that meets client's satisfaction."}
+              activity={"Deliver software clients are happy with."}
             />
           </li>
           <li>
             <ActivityCard
               icon={faPalette}
-              activity={"Championing design-driven development."}
+              activity={"Push for designing before building."}
             />
           </li>
         </ul>
@@ -110,14 +110,14 @@ const experience = [
     description: (
       <div>
         <div>
-          3 months of design-thinking experiences, networking and getting
-          diverse perspectives. Best 3 months of 2022.
+          Three months of design thinking, meeting people and hearing other
+          points of view. The best three months of my 2022.
         </div>
         <ul className="activity-group">
           <li>
             <ActivityCard
               activity={
-                "Engaged in design-thinking sessions with a diverse group of entrepreneurs."
+                "Took part in design-thinking sessions with other founders."
               }
               icon={faUsersGear}
             />
@@ -125,14 +125,14 @@ const experience = [
           <li>
             <ActivityCard
               activity={
-                "Gained insight on the importance of user-centric problem solving."
+                "Learned to start from the user's problem."
               }
               icon={faUserCheck}
             />
           </li>
           <li>
             <ActivityCard
-              activity={"Networked with industry experts and investors."}
+              activity={"Met industry experts and investors."}
               icon={faHandshake}
             />
           </li>
@@ -147,7 +147,7 @@ const experience = [
     period: "Jul 2021 - Feb 2022",
     description: (
       <div>
-        Building Web3 powered applications with the Dev team at{" "}
+        Building Web3 apps with the dev team at{" "}
         <a
           target="_blank"
           rel="noreferrer"
@@ -165,14 +165,14 @@ const experience = [
           <li>
             <ActivityCard
               icon={faCubes}
-              activity={"Built concept products and MVPs for clients."}
+              activity={"Built prototypes and MVPs for clients."}
             />
           </li>
           <li>
             <ActivityCard
               icon={faChalkboardTeacher}
               activity={
-                "Led the development of the Blocverse education platform. now,"
+                "Led the development of the Blocverse education platform."
               }
               linkHref={"https://blog.blocverse.com"}
               linkTitle={"Blocverse Blog"}
@@ -181,7 +181,7 @@ const experience = [
           <li>
             <ActivityCard
               icon={faMusic}
-              activity={"Architected a token-gated music platform for artists."}
+              activity={"Designed a token-gated music platform for artists."}
               linkHref={"https://africanvaluables.com"}
               linkTitle={"African Valuables"}
             />
@@ -189,7 +189,7 @@ const experience = [
           <li>
             <ActivityCard
               icon={faGraduationCap}
-              activity={"Learnt the ropes of Web3 development."}
+              activity={"Learned the basics of Web3 development."}
             />
           </li>
         </ul>
@@ -203,28 +203,28 @@ const experience = [
     description: (
       <div>
         <div>
-          Targeted the social-commerce market. Built a social-store management
-          system. Got some users and engagement but ultimately closed it down.
-          My first rodeo at building anything people used.
+          A social-commerce startup. I built a store-management system for
+          people selling on social media. It got some users, but we shut it
+          down. It was the first thing I built that people used.
         </div>
         <ul className="activity-group">
           <li>
             <ActivityCard
               activity={
-                "Explored a wide range of technologies, from bare-metal to frameworks."
+                "Tried a wide range of technology, from bare metal to frameworks."
               }
               icon={faBrain}
             />
           </li>
           <li>
             <ActivityCard
-              activity={"Gained my first experience with building a venture."}
+              activity={"Got my first experience of building a company."}
               icon={faUserCog}
             />
           </li>
           <li>
             <ActivityCard
-              activity={"Developed keen interests in web development."}
+              activity={"Got hooked on web development."}
               icon={faLaptopCode}
             />
           </li>
@@ -243,7 +243,7 @@ const experience = [
         <ul className="activity-group">
           <li>
             <ActivityCard
-              activity={"Facilitated a six-week Dev/Design bootcamp."}
+              activity={"Ran a six-week dev and design bootcamp."}
               icon={faChalkboardTeacher}
             />
           </li>
@@ -251,7 +251,7 @@ const experience = [
             <ActivityCard
               icon={faHandsHelping}
               activity={
-                "Contributed resources and guidance to community members."
+                "Shared resources and helped other members."
               }
             />
           </li>
@@ -301,22 +301,17 @@ export default function About() {
             }
           >
             <p>
-              I’m a software developer driven by a deep curiosity for technology
-              and a desire to create meaningful experiences through
-              design-driven development. From a young age, I’ve been fascinated
-              by how things work and how we can continually improve the tools we
-              build to make life more efficient and enjoyable. This curiosity
-              has shaped my approach to software—constantly learning, growing,
-              and seeking new ways to push boundaries.
+              I’m a software developer. I’ve wanted to know how things work for
+              as long as I can remember, and I like building tools that make
+              everyday life a little easier. I design first: I work out how
+              something should feel to use, then build it. I’m still learning all
+              the time.
             </p>
             <p>
-              At the core of my work is a passion for understanding systems,
-              both technological and universal. I believe that every aspect of
-              the world is governed by underlying systems, and mastering them is
-              the key to unlocking greater potential. For me, software
-              development is about more than just building products; it’s about
-              exploring how we can optimise the way we live and interact with
-              the world.
+              I’m interested in systems, in software and outside it. Most things
+              run on rules you can learn, and once you understand them you can
+              change them. Software is how I try to make the way we live and work
+              run a bit better.
             </p>
           </div>
         </div>

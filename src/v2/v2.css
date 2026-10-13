@@ -381,7 +381,7 @@
 .v2-root .hero-pins {
   position: relative;
   width: 300px;
-  height: 340px;
+  height: 405px;
   flex: none;
 }
 .v2-root .hero-pin {
@@ -458,7 +458,7 @@
 .v2-root .hero-pin__guess { font-size: var(--step--1); color: var(--accent-text); }
 
 @media (max-width: 860px) {
-  .v2-root .hero-pins { width: 100%; max-width: 340px; height: 270px; }
+  .v2-root .hero-pins { width: 100%; max-width: 340px; height: 318px; }
   .v2-root .hero-pin--photo { width: 180px; }
   .v2-root .hero-pin--clock { width: 156px; }
   .v2-root .hero-pin__time { font-size: 2.2rem; }
@@ -1258,6 +1258,32 @@ body:has(.v2-root) { background-color: #f2f8fb !important; }
 .v2-root .pin--print-cyan .pin__scene svg {
   filter: grayscale(1) sepia(1) hue-rotate(165deg) saturate(2.2) brightness(0.92) contrast(1.05);
 }
+/* mono — black and white, with a little extra contrast so it isn't flat */
+.v2-root .pin--print-mono .pin__media img {
+  filter: grayscale(1) contrast(1.12) brightness(1.03);
+}
+/* sepia — for old things (an anchor on a fort wall) */
+.v2-root .pin--print-sepia .pin__media img {
+  filter: grayscale(1) sepia(0.85) contrast(1.06) brightness(0.97);
+}
+/* film — a frame cut from a strip: dark stock, sprocket holes top and
+   bottom, light caption. The grade and grain are baked into the image. */
+.v2-root .pin--print-film {
+  padding: 1.15rem 0 0.95rem;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 6px, #ece6d6 6px 14px, transparent 14px 22px) left 0.35rem top 0.38rem / calc(100% - 0.7rem) 0.42rem no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 6px, #ece6d6 6px 14px, transparent 14px 22px) left 0.35rem bottom 0.32rem / calc(100% - 0.7rem) 0.42rem no-repeat,
+    #171614;
+}
+.v2-root .pin--print-film .pin__media { border-radius: 0; background: #000; }
+.v2-root .pin--print-film .pin__cap {
+  font: 500 0.7rem var(--font-mono);
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ece6d6;
+  margin: 0.5rem 0.6rem 0.15rem;
+}
 
 /* playlist */
 .v2-root .pin--playlist { background: linear-gradient(160deg, #cdeefb, var(--bg-raised) 75%); }
@@ -1300,19 +1326,34 @@ body:has(.v2-root) { background-color: #f2f8fb !important; }
 .v2-root .pin--link .pin__kicker { color: var(--accent-text); }
 
 /* book — a cover, not a card */
-.v2-root .pin--book { padding: 0; background: none; border: 0; }
+.v2-root .pin--book { padding: 0; background: none; border: 0; box-shadow: none; width: fit-content; }
 .v2-root .pin__book {
   aspect-ratio: 2 / 3;
   max-width: 190px;
   display: flex; flex-direction: column; justify-content: space-between;
   padding: 1rem 0.9rem;
   border-radius: 2px 6px 6px 2px;
-  background: linear-gradient(90deg, #8a2e1f 0 6%, #a8392a 6% 7%, #b5402f 7%);
-  color: #f7e9d7;
+  background: var(--book-bg, linear-gradient(90deg, #8a2e1f 0 6%, #a8392a 6% 7%, #b5402f 7%));
+  color: var(--book-fg, #f7e9d7);
   box-shadow: inset -6px 0 12px rgba(0, 0, 0, 0.25);
 }
 .v2-root .pin__book-t { font-family: var(--font-display); font-size: 1.7rem; line-height: 1; }
 .v2-root .pin__book-a { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9; }
+/* A light cover (Rework) needs an edge to sit off the paper. */
+.v2-root .pin__book[style] { border: 1px solid rgba(18, 52, 74, 0.12); box-shadow: inset 5px 0 0 rgba(0, 0, 0, 0.06), inset -6px 0 12px rgba(0, 0, 0, 0.06); font-weight: 600; }
+.v2-root .pin__book[style] .pin__book-t { letter-spacing: 0.04em; text-transform: uppercase; font-size: 1.5rem; }
+.v2-root .pin__book[style] .pin__book-a { color: var(--book-sub); opacity: 1; }
+.v2-root .pin__book { box-shadow: inset -6px 0 12px rgba(0, 0, 0, 0.25), 0 14px 30px -14px rgba(18, 52, 74, 0.45), 0 4px 10px -4px rgba(18, 52, 74, 0.25); }
+.v2-root .pin__book[style] { box-shadow: inset 5px 0 0 rgba(0, 0, 0, 0.06), inset -6px 0 12px rgba(0, 0, 0, 0.06), 0 14px 30px -14px rgba(18, 52, 74, 0.45), 0 4px 10px -4px rgba(18, 52, 74, 0.25); }
+/* Rework's cover: four crumpled paper balls down the right-hand side. */
+.v2-root .pin__book--crumpled {
+  background:
+    radial-gradient(circle at 50% 50%, #f28b3c 0 52%, transparent 56%) right 22% top 30% / 30px 30px no-repeat,
+    radial-gradient(circle at 50% 50%, #3fa7d6 0 52%, transparent 56%) right 12% top 46% / 34px 34px no-repeat,
+    radial-gradient(circle at 50% 50%, #3fae5d 0 52%, transparent 56%) right 26% top 62% / 30px 30px no-repeat,
+    radial-gradient(circle at 50% 50%, #d9342b 0 52%, transparent 56%) right 14% top 78% / 28px 28px no-repeat,
+    var(--book-bg);
+}
 
 /* ticket */
 .v2-root .pin--ticket { padding: 0; background: none; border: 0; }
@@ -1329,6 +1370,14 @@ body:has(.v2-root) { background-color: #f2f8fb !important; }
   width: 14px; height: 14px; border-radius: 50%;
   background: var(--bg);
 }
+/* dark — a conference pass rather than a cinema stub */
+.v2-root .pin__ticket--dark {
+  background:
+    linear-gradient(90deg, #ff5f6d, #ffc371, #7ee8a2, #5ab8ff, #b088ff) top / 100% 4px no-repeat,
+    #0d0d0f;
+  color: #f2f2f3;
+}
+.v2-root .pin__ticket--dark .pin__ticket-main { border-right-color: rgba(242, 242, 243, 0.3); }
 .v2-root .pin__ticket::before { top: -7px; }
 .v2-root .pin__ticket::after { bottom: -7px; }
 
@@ -1387,6 +1436,14 @@ body:has(.v2-root) { background-color: #f2f8fb !important; }
   .v2-root .pin-detail[open] { grid-template-columns: 1fr; }
   .v2-root .pin-detail__visual { padding: 1.4rem; }
   .v2-root .pin-detail__text { padding: 1.4rem; }
+}
+/* Phones: two columns leave each card ~150px wide, too narrow for a channel
+   card's avatar + title + description. One column, capped and centred. */
+@media (max-width: 480px) {
+  .v2-root .board { columns: 1; padding: var(--s4) var(--s3); }
+  .v2-root .board .pin { max-width: 26rem; margin-inline: auto; }
+  .v2-root .board .pin--book { margin-inline: auto; }
+  .v2-root .board .pin--photo:not(.pin--print-film) { max-width: 17rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

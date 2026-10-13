@@ -26,7 +26,7 @@ V2Layout.jsx           sticky top nav, footer, <Outlet/>
 lib/format.js          asset/year/caption/gallery-span helpers
 data/imageSizes.js     measured intrinsic dimensions for every shipped image
 data/experience.js     the six roles from v1's About page, as plain data
-data/pins.js           the pin board's content (PLACEHOLDER — see below)
+data/pins.js           the pin board's content
 components/            Reveal, ProjectCard, Lightbox, Icon, HeroPins,
                        PinCard, PinDetail, PinScene
 pages/                 Home, Projects, ProjectDetail, Pinboard, About, Contact
@@ -148,12 +148,14 @@ Layout is CSS columns, not measured absolute positioning, so it reflows on its
 own. Dragging only adds a transform, so reading order, tab order and layout
 never change and every pin stays keyboard-reachable.
 
-**All pin content is placeholder**, written to sound like Josh. To add a real
-pin, append an object to `data/pins.js` (the shape is documented at the top of
-the file). Real photos go in `public/pin-images/` as
-`image: { src, width, height, alt }`; until a photo pin has one, it falls back
-to a drawn `scene` from `PinScene.jsx`. `print: "cyan"` opts a photo into the
-sun-print look.
+**The content is real**: the channels, podcast, albums and playlists are
+Josh's, captions and track lists come from the linked pages, and artwork is
+downloaded into `public/pin-images/` as JPEGs (never hotlinked). No stories are
+written yet; a pin shows one only when it has a `story`. To add a pin, append
+an object to `data/pins.js` (the shape is documented at the top of the file).
+Real photos go in `public/pin-images/` as `image: { src, width, height, alt }`;
+until a photo pin has one, it falls back to a drawn `scene` from
+`PinScene.jsx`. `print: "cyan"` opts a photo into the sun-print look.
 
 ## Open items
 

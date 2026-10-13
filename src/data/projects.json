@@ -38,7 +38,7 @@
   },
   {
     "name": "UseAzza",
-    "description": "Led the development of Azza bot, contributed to the API services for the WhatsApp bot, which has currently processed $5M+ volume across multiple blockchains and is used by 6k+ users in public beta.",
+    "description": "I lead development of Azza Bot, and I work on the API behind the WhatsApp bot. It has processed $10M+ in volume across 9+ blockchains, and is used by 13k+ people in public beta.",
     "url": "https://www.useazza.com",
     "image": "./project-images/useazza-framed.png",
     "linkIsExternal": true,
@@ -46,7 +46,7 @@
   },
   {
     "name": "GlobaChain Payment Gateway",
-    "description": "I led development of the GlobaChain Merchant Payment Gateway, a platform that enables merchants to accept payments in cryptocurrencies.",
+    "description": "I led development of GlobaChain's merchant payment gateway, which lets businesses accept payments in crypto.",
     "url": "/projects/globachain-merchant",
     "image": "/project-images/globachain-merchant/cover.jpeg",
     "linkIsExternal": false,
@@ -67,7 +67,7 @@
   },
   {
     "name": "GlobaChain On/Off-ramp Widget",
-    "description": "I led development of the GlobaChain On/Off-ramp Widget, a platform that enables users to buy and sell cryptocurrencies.",
+    "description": "I led development of GlobaChain's on/off-ramp widget, where people buy and sell crypto.",
     "url": "https://globachain.com",
     "image": "./project-images/globachain-ramps-widget.png",
     "linkIsExternal": true,
@@ -75,7 +75,7 @@
   },
   {
     "name": "TAAS",
-    "description": "I worked on smart contract and frontend components of the TAAS dApp. TAAS is a decentralized platform for tokenizing RWA (Real World Assets), making it easy for anyone to create and manage tokenized assets.",
+    "description": "I built the smart contracts and frontend for TAAS, a dApp for tokenizing real-world assets, so anyone can create and manage them.",
     "url": "https://taas-platform.vercel.app/",
     "image": "./project-images/taas.png",
     "linkIsExternal": true,
@@ -83,7 +83,7 @@
   },
   {
     "name": "Shiga Digital",
-    "description": "I worked on frontend, wallet integration and backend components of a non-custodial wallet with on/off-ramp integrations, enabling users to buy, sell, and store cryptocurrencies.",
+    "description": "I built the frontend, wallet integration and backend for a non-custodial wallet with on/off-ramps, so people can buy, sell and hold crypto.",
     "url": "/projects/shiga-digital",
     "image": "/project-images/shiga-digital/cover.png",
     "linkIsExternal": false,
@@ -103,7 +103,7 @@
   },
   {
     "name": "Plotpeer",
-    "description": "Developed frontend components and smart contract standards for tokenizing real estate assets on the blockchain. Led development of the Plotpeer platform, a decentralized marketplace for investing in tokenized real estate assets.",
+    "description": "I led development of Plotpeer, a marketplace for investing in tokenized real estate, and wrote its frontend and smart-contract standards.",
     "url": "/projects/plotpeer",
     "image": "/project-images/plotpeer/cover.png",
     "linkIsExternal": false,
@@ -120,7 +120,7 @@
   },
   {
     "name": "Mintero",
-    "description": "Implemented responsive design for the Mintero landing page. Developed a proof of concept application for tokenizing real estate assets on the blockchain.",
+    "description": "I built the responsive Mintero landing page, plus a proof of concept for tokenizing real estate on-chain.",
     "url": "https://mintero.io/",
     "image": "/project-images/mintero.png",
     "linkIsExternal": true,
@@ -128,7 +128,7 @@
   },
   {
     "name": "Duo Wallet",
-    "description": "Collaborated with a product team to validate the concept of a next-gen wallet that prioritizes user experience and security. Developed the landing page and a proof of concept application.",
+    "description": "I worked with a product team to test the idea of a wallet built around user experience and security, and built the landing page and a proof of concept.",
     "url": "https://duo-wallet.vercel.app/",
     "image": "./project-images/duo-wallet-framed.png",
     "linkIsExternal": true,
@@ -136,7 +136,7 @@
   },
   {
     "name": "Uwazi",
-    "description": "Led a product team to research on and develop a solution for trust-less funding of wildlife conservation projects. Developed a prototype that won the 2022 Mara Hackathon.",
+    "description": "I led a product team researching how to fund wildlife conservation without a central trust, and built the prototype that won the 2022 Mara Hackathon.",
     "url": "https://www.behance.net/gallery/160185645/Uwazi-UX-Case-Study",
     "image": "./project-images/uwazi.png",
     "linkIsExternal": true,
@@ -144,7 +144,7 @@
   },
   {
     "name": "TixHive",
-    "description": "A platform that enables event organizers to create, manage, and sell NFT tickets for events. Developed frontend and backend/smart contract components.",
+    "description": "TixHive lets event organizers create, manage and sell NFT tickets. I built the frontend, the backend and the smart contracts.",
     "url": "https://tixhive.com",
     "image": "./project-images/tixhive.png",
     "linkIsExternal": true,
@@ -152,7 +152,7 @@
   },
   {
     "name": "African Valuables Collective",
-    "description": "A platform that connects African creatives to the global market. Developed the landing page and a system for token-gating premium content.",
+    "description": "A platform connecting African creatives to the global market. I built the landing page and a system for gating premium content behind a token.",
     "url": "https://africanvaluables.com",
     "image": "./project-images/avc-blue.png",
     "linkIsExternal": true,
@@ -160,7 +160,7 @@
   },
   {
     "name": "SolSmurfs",
-    "description": "An NFT project based on Smurf characters. Developed the landing page and a system for minting NFTs on Solana.",
+    "description": "An NFT project built on Smurf characters. I built the landing page and the minting flow on Solana.",
     "url": "https://solsmurfs.netlify.app",
     "image": "./project-images/solsmurfs.png",
     "linkIsExternal": true,

@@ -35,9 +35,9 @@ export default function Home() {
             .
           </h1>
           <p className="lead" style={{ marginTop: "var(--s5)" }}>
-            I care about design as much as code, and I like knowing how systems
-            work. Right now I&apos;m building Azza, a stablecoin bank for everyday
-            people.
+            Most of my work happens before the code: working out how the system
+            fits together and what the person using it needs. Right now
+            that&apos;s Azza, a stablecoin bank for everyday people.
           </p>
           <div className="hero__actions">
             <Link className="btn btn--accent" to={v2Routes.projects}>

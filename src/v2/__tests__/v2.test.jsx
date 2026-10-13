@@ -118,10 +118,10 @@ describe("v2 shell", () => {
 });
 
 describe("v2 home", () => {
-  it("pins the avatar and a local-time card beside the headline", () => {
+  it("pins a photo and a local-time card beside the headline", () => {
     renderAt("/");
-    const avatar = screen.getByRole("img", { name: /avatar of Josh/ });
-    expect(avatar).toHaveAttribute("width", "310");
+    const avatar = screen.getByRole("img", { name: /Photo of Josh/ });
+    expect(avatar).toHaveAttribute("width", "640");
     expect(avatar).not.toHaveAttribute("loading");
     expect(screen.getByText("Nigeria · WAT")).toBeInTheDocument();
     expect(document.querySelector(".hero-pin__time").textContent).toMatch(/^\d{2}:\d{2}$/);
@@ -181,7 +181,7 @@ describe("v2 projects index", () => {
     renderAt("/projects");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Projects");
     expect(
-      screen.getByText(/13 projects from 2021 to 2026\. 4 have a full case study/)
+      screen.getByText(/Things I.ve built since 2021/)
     ).toBeInTheDocument();
     expect(screen.getByRole("status")).toHaveTextContent("Showing all 13 projects");
   });
@@ -321,7 +321,7 @@ describe("v2 pinboard", () => {
     renderAt("/pinboard");
     expect(screen.getByRole("link", { name: "Pinboard" })).toHaveAttribute("aria-current", "page");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Things I keep coming back to."
+      "Things I like, mostly."
     );
   });
 
@@ -394,6 +394,21 @@ describe("v2 pinboard", () => {
     const css = fs.readFileSync("src/v2/v2.css", "utf8");
     expect(css).toMatch(/html:has\(\.v2-root dialog\[open\]\)\s*\{[^}]*overflow:\s*hidden/);
     expect(css).toMatch(/\.pin-detail,\s*\.v2-root \.lightbox\s*\{[^}]*overscroll-behavior:\s*contain/);
+  });
+
+  it("shows real photos from local files, each with alt text and its own shape", () => {
+    renderAt("/pinboard");
+    const photos = PINS.filter((p) => p.type === "photo" && p.image);
+    expect(photos.length).toBeGreaterThan(0);
+    photos.forEach((pin) => {
+      expect(fs.existsSync(`public${pin.image.src}`)).toBe(true);
+      const img = document.querySelector(`.board img[src="${pin.image.src}"]`);
+      expect(img).toHaveAttribute("alt", pin.image.alt);
+      expect(img.parentElement.style.aspectRatio).toBe(`${pin.image.width} / ${pin.image.height}`);
+    });
+    // Treatments are classes on the pin, so the board and the dialog match.
+    expect(document.querySelector(".pin--print-film")).toBeTruthy();
+    expect(document.querySelector(".pin--print-sepia")).toBeTruthy();
   });
 
   it("shows each pin's avatar or cover from a local file", () => {

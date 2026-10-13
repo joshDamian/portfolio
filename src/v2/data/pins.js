@@ -8,19 +8,20 @@
      id        stable slug (also the React key, and the seed for its tilt)
      type      photo | playlist | quote | note | link | book | artifact | ticket | score
      title     short; also the accessible name of the pin
-     date      "YYYY-MM"
-     caption   one line, shown in the story view
+     date      "YYYY-MM" (optional for books)
+     caption?  one line, shown in the story view
      story?    the reason it is pinned (the point of the whole page)
      place?, tags[]
    Per type:
      photo     image: { src, width, height, alt }   real photo (preferred)
                scene: "court" | "desk" | "sky" | "street"   drawn placeholder
-               print: "cyan"                         opt-in sun-print treatment
+               print: "cyan" | "sepia" | "mono" | "film"   opt-in treatment
      playlist  tracks: [[title, artist]], url, kind? ("Album"; default "Playlist"), by?, art?
      quote     quote, by
      link      url, author, art?: { src, shape: "round" | "square" }  (avatar / cover)
-     book      author
+     book      author, cover?: { bg, fg, sub, motif? }   (no date needed)
      artifact  code?   (no code -> the title is shown large, e.g. "52 lbs")
+     ticket    place?, number?, theme?: "dark"
      score     score: [[mine, theirs], ...]
    Real photos go in public/pin-images/ and are referenced as "/pin-images/x.jpg".
 =========================================================================== */
@@ -259,4 +260,132 @@ const PINS = [
   },
 ];
 
-export default PINS;
+/* Offline life: photos, a book and a ticket. Places and dates are Josh's;
+   photos are cropped to their print shape with all metadata stripped. */
+const OFFLINE = [
+  {
+    id: "tennis-rackets",
+    type: "photo",
+    print: "mono",
+    title: "Racket collection",
+    image: { src: "/pin-images/tennis-rackets.jpg", width: 960, height: 1200, alt: "Four tennis rackets and a cap on a wall rack, with a potted plant on top" },
+    place: "Lagos",
+    date: "2026-02",
+    tags: ["tennis"],
+  },
+  {
+    id: "tennis-court",
+    type: "photo",
+    title: "On court",
+    image: { src: "/pin-images/tennis-court.jpg", width: 960, height: 1200, alt: "A tennis ball resting on a racket's strings, on a green court by the net" },
+    place: "Lagos",
+    date: "2025-12",
+    tags: ["tennis"],
+  },
+  {
+    id: "abuja-hike-view",
+    type: "photo",
+    print: "cyan",
+    title: "Hike, Abuja",
+    image: { src: "/pin-images/abuja-hike-view.jpg", width: 1200, height: 900, alt: "Wide rocky hilltop with scattered trees and the city in the distance" },
+    place: "Abuja",
+    date: "2025-11",
+    tags: ["hiking"],
+  },
+  {
+    id: "abuja-hike",
+    type: "photo",
+    print: "mono",
+    title: "On the hike",
+    image: { src: "/pin-images/abuja-hike.jpg", width: 960, height: 1200, alt: "Josh in a cap on a hilltop, with the city spread out below" },
+    place: "Abuja",
+    date: "2025-11",
+    tags: ["hiking"],
+  },
+  {
+    id: "enugu-kedu",
+    type: "photo",
+    title: "042, Kedu?",
+    image: { src: "/pin-images/enugu-kedu.jpg", width: 960, height: 1200, alt: "A café wall mural reading 042 Kedu? above white chairs and a table" },
+    place: "Enugu",
+    date: "2025-07",
+    caption: "042 is Enugu's phone code, and kedu is Igbo for \u201chow are you?\u201d",
+    tags: ["home"],
+  },
+  {
+    id: "fort-jesus-anchor",
+    type: "photo",
+    print: "sepia",
+    title: "Fort Jesus",
+    image: { src: "/pin-images/fort-jesus-anchor.jpg", width: 960, height: 1200, alt: "A large old iron anchor standing against a weathered fort wall" },
+    place: "Mombasa",
+    date: "2023-01",
+    tags: ["travel"],
+  },
+  {
+    id: "nairobi-go-kart",
+    type: "photo",
+    print: "film",
+    title: "Birthday, 2022",
+    image: { src: "/pin-images/nairobi-go-kart.jpg", width: 1200, height: 502, alt: "A go-kart blurred with speed on a track lined with red and white barriers" },
+    place: "Nairobi",
+    date: "2022-12",
+    tags: ["birthday"],
+  },
+  {
+    id: "masai-mara-lion",
+    type: "photo",
+    title: "Masai Mara",
+    image: { src: "/pin-images/masai-mara-lion.jpg", width: 1200, height: 900, alt: "A young lion standing in tall golden grass" },
+    place: "Masai Mara",
+    date: "2022-09",
+    tags: ["travel"],
+  },
+  {
+    id: "masai-mara-balloons",
+    type: "photo",
+    title: "Balloons over the Mara",
+    image: { src: "/pin-images/masai-mara-balloons.jpg", width: 1200, height: 900, alt: "Three striped hot-air balloons drifting low over the savanna at sunrise" },
+    place: "Masai Mara",
+    date: "2022-09",
+    tags: ["travel"],
+  },
+  {
+    id: "rework",
+    type: "book",
+    title: "Rework",
+    author: "Jason Fried & David Heinemeier Hansson",
+    cover: { bg: "#f4f1ea", fg: "#c8202f", sub: "#2d3a8c", motif: "crumpled" },
+    tags: ["books"],
+  },
+  {
+    id: "nextjs-conf-2022",
+    type: "ticket",
+    title: "Next.js Conf",
+    number: "#100491",
+    place: "Online · hosted by Vercel",
+    date: "2022-10",
+    theme: "dark",
+    tags: ["events"],
+  },
+];
+
+/* Board order. Offline pins are spread through the board, not kept in a
+   block, so it reads as one life rather than "online" and "offline". */
+const ORDER = [
+  "tennis-clash-matches", "tennis-rackets", "2bd2bth", "masai-mara-balloons",
+  "hannah-fry", "rework", "jay-sharon", "tennis-court", "htx-studio",
+  "nairobi-go-kart", "key-and-peele", "abuja-hike-view", "chewkz",
+  "strangers-on-a-bench", "fort-jesus-anchor", "dont-forget-about-me-demos",
+  "enugu-kedu", "kallmekris", "catharsis", "masai-mara-lion", "playlist-2026-02",
+  "abuja-hike", "playlist-2026-03", "nextjs-conf-2022", "playlist-2026-04",
+  "playlist-2026-05",
+];
+
+const byId = Object.fromEntries([...PINS, ...OFFLINE].map((pin) => [pin.id, pin]));
+const BOARD = ORDER.map((id) => byId[id]);
+if (BOARD.length !== PINS.length + OFFLINE.length || BOARD.some((pin) => !pin)) {
+  throw new Error("pins.js: ORDER must list every pin exactly once");
+}
+
+export default BOARD;

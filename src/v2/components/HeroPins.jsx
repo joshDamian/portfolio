@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import avatar from "../../images/joshdamian.png";
+import photo from "../../images/josh.jpg";
 
 /* A small pinned cluster beside the hero headline — the pin board in
    miniature. Decorative in feel, but every piece carries real text, so it is
@@ -42,10 +42,10 @@ export default function HeroPins() {
     <div className="hero-pins">
       <figure className="hero-pin hero-pin--photo">
         <img
-          src={avatar}
-          width="310"
-          height="310"
-          alt="Illustrated avatar of Josh wearing headphones"
+          src={photo}
+          width="640"
+          height="640"
+          alt="Photo of Josh smiling, in a dark shirt"
           decoding="async"
         />
         <figcaption>that&apos;s me</figcaption>

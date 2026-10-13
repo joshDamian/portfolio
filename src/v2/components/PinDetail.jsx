@@ -30,19 +30,18 @@ export default function PinDetail({ pin, onClose }) {
       {pin && (
         <>
           <div className="pin-detail__visual">
-            <div className={`pin pin--${pin.type}${pin.print === "cyan" ? " pin--print-cyan" : ""}`}>
+            <div className={`pin pin--${pin.type}${pin.print ? ` pin--print-${pin.print}` : ""}`}>
               <PinBody pin={pin} />
             </div>
           </div>
           <div className="pin-detail__text">
             <p className="pin-detail__meta">
-              {pin.kind || TYPE_LABEL[pin.type]} · {pinDate(pin.date)}
-              {pin.place ? ` · ${pin.place}` : ""}
+              {[pin.kind || TYPE_LABEL[pin.type], pinDate(pin.date), pin.place].filter(Boolean).join(" · ")}
             </p>
             <h2 className="pin-detail__title" id="pin-detail-title">
               {pin.title}
             </h2>
-            <p className="pin-detail__cap">{pin.caption}</p>
+            {pin.caption && <p className="pin-detail__cap">{pin.caption}</p>}
             {pin.story && <p className="pin-detail__story">{pin.story}</p>}
             {pin.type === "playlist" && (
               <ol className="pin__tracks pin__tracks--full">

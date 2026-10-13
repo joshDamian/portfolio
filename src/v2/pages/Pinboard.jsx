@@ -102,11 +102,11 @@ export default function Pinboard() {
       <header className="section section--tight wrap">
         <span className="eyebrow">Pinboard</span>
         <h1 className="display" style={{ fontSize: "var(--step-4)" }}>
-          Things I keep <em className="pinboard__em">coming back to.</em>
+          Things I like, <em className="pinboard__em">mostly.</em>
         </h1>
         <p className="lead" style={{ marginTop: "var(--s4)" }}>
-          YouTube channels I watch, music I&apos;ve had on repeat, a podcast, and my Tennis
-          Clash channel.
+          What I watch, listen to and get up to, plus my own Tennis Clash
+          channel, which is the &ldquo;mostly&rdquo;.
         </p>
 
         <div className="chiprow pinboard__tools" role="group" aria-label="Board view">
@@ -155,7 +155,7 @@ export default function Pinboard() {
                 onPointerCancel={onPointerUp}
               >
                 <article
-                  className={`pin pin--${pin.type}${pin.print === "cyan" ? " pin--print-cyan" : ""}`}
+                  className={`pin pin--${pin.type}${pin.print ? ` pin--print-${pin.print}` : ""}`}
                   data-fix={hash(pin.id, 7) > 0.45 ? "tape" : "pin"}
                 >
                   <PinBody pin={pin} />

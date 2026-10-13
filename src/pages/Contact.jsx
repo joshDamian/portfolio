@@ -47,11 +47,10 @@ export default function Contact() {
             <Tilt>
               <p className="bg-slate-700 bg-opacity-50 shadow-md font-normal text-[14px] leading-[29px] clip-message text-slate-300 max-w-sm pb-20 mx-auto shadow-black px-6 pt-6">
                 <h4 className="text-white font-semibold text-[15px] md:text-[16px] uppercase">
-                  I know you have something to say 😊
+                  Say hello
                 </h4>
-                Feel free to get in touch with me. I am always open to
-                discussing new projects, creative ideas or opportunities to be
-                part of your visions.
+                Have a project, an idea or a role in mind? Send me a message,
+                or email me directly.
               </p>
             </Tilt>
             <div className="flex mt-2 justify-end max-w-sm mx-auto items-center">
