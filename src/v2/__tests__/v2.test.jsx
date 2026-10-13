@@ -68,13 +68,13 @@ describe("v2 shell", () => {
     expect(document.getElementById("v2-main")).toBeTruthy();
   });
 
-  it("carries no version banner, just a discreet link to v1", () => {
+  it("carries no reference to the previous version", () => {
     renderAt("/");
     expect(screen.queryByText(/still live/)).toBeNull();
-    expect(screen.getByRole("link", { name: "Previous version" })).toHaveAttribute(
-      "href",
-      "/v1"
-    );
+    expect(screen.queryByRole("link", { name: "Previous version" })).toBeNull();
+    // v1 stays reachable by URL (see the coexistence tests), but v2 never links to it.
+    const hrefs = Array.from(document.querySelectorAll("a")).map((a) => a.getAttribute("href"));
+    expect(hrefs.some((h) => h === "/v1" || h?.startsWith("/v1/"))).toBe(false);
   });
 
   it("marks the current nav item", () => {
@@ -116,6 +116,16 @@ describe("v2 shell", () => {
 });
 
 describe("v2 home", () => {
+  it("pins the avatar and a local-time card beside the headline", () => {
+    renderAt("/");
+    const avatar = screen.getByRole("img", { name: /avatar of Josh/ });
+    expect(avatar).toHaveAttribute("width", "310");
+    expect(avatar).not.toHaveAttribute("loading");
+    expect(screen.getByText("Nigeria · WAT")).toBeInTheDocument();
+    expect(document.querySelector(".hero-pin__time").textContent).toMatch(/^\d{2}:\d{2}$/);
+    expect(document.querySelector(".hero-pin__guess").textContent).toMatch(/^probably /);
+  });
+
   it("reads as one sentence for screen readers", () => {
     renderAt("/");
     // The space after <br /> is doing real work: without it this asserts as
@@ -147,7 +157,11 @@ describe("v2 home", () => {
 
   it("renders a measured intrinsic size on every card image", () => {
     renderAt("/");
-    screen.getAllByRole("img").forEach((img) => {
+    // Scoped to the project cards: the hero avatar is above the fold, so it
+    // is deliberately not lazy-loaded.
+    const cardImages = screen.getAllByRole("article").flatMap((card) => within(card).getAllByRole("img"));
+    expect(cardImages).toHaveLength(3);
+    cardImages.forEach((img) => {
       expect(Number(img.getAttribute("width"))).toBeGreaterThan(0);
       expect(Number(img.getAttribute("height"))).toBeGreaterThan(0);
       expect(img).toHaveAttribute("loading", "lazy");

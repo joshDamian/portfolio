@@ -13,8 +13,8 @@ reachable under a version prefix so the two can still be compared.
 | `/about` | `/v1/about` |
 | `/contact` | `/v1/contact` |
 
-`/v1` is linked once, quietly, from the footer ("Previous version"). There is no
-version banner — on the real site it would announce a version to visitors.
+Nothing in v2 links to `/v1` — no footer link, no version banner. It stays
+reachable only by typing the URL, and a test guards that v2 never links to it.
 
 ## Files
 
@@ -34,7 +34,7 @@ Three files outside this folder:
 
 - `src/App.jsx` — the route table: v1 under `/v1`, v2 at `/`.
 - `src/constants/paths.js` — `V1_BASE` and `v1Path()`. v1's internal links go
-  through it; deleting that file plus the `/v1` branch and footer link is what
+  through it; deleting that file plus the `/v1` branch is what
   retiring v1 amounts to.
 - `src/utils/contact.js` — `submitContact()` and `mailtoHref()`, shared by v1
   and v2 (see the contact section below). `lib/format.js` re-exports
@@ -63,19 +63,26 @@ touched.
 **To put v1 back in front:** set `V2_BASE = "/v2"` and `V1_BASE = ""`.
 
 **To retire v1:** delete the v1 branch in `App.jsx`, delete
-`src/constants/paths.js`, drop the footer link, and fold v2 into the app — remove
+`src/constants/paths.js`, and fold v2 into the app — remove
 the `.v2-root` scope from `v2.css`, move its tokens to `:root`, merge into
 `index.css`, and `rm -rf src/v2`.
 
 ## What v2 changes, and why
 
-Carried over: the dark editorial mood, content-first pacing, the timeline
-gutter, skyblue as the only accent, data-driven projects.
+Carried over: the editorial mood, content-first pacing, the timeline gutter,
+skyblue as the only accent, data-driven projects.
 
 Rebuilt: the sidebar rail became a sticky top nav; the four-breakpoint `md:`/`lg:`/
-`xl:` ladders became one fluid `clamp()` scale; Poppins was replaced by Fraunces
-(display) + Inter (UI); the gradient that sat on every surface is now one fixed
-wash; cards and the case-study gallery were re-cut.
+`xl:` ladders became one fluid `clamp()` scale; the gradient that sat on every
+surface is now one fixed wash; cards and the case-study gallery were re-cut.
+
+**Theme: Clear Sky.** v2 launched dark (Fraunces + Inter on near-black) and was
+re-skinned light after a comparison in `public/pinboard-lab/`: a pale sky that
+fades into the page, cards in soft paper (`#fbfcf9`), Instrument Serif for
+display, Geist for UI, IBM Plex Mono for small labels (eyebrows, dates, meta
+keys). Skyblue `#87ceeb` is used only as a *fill* — as text on this ground it's
+~1.7:1 — so text, links and focus rings use `--accent-text` (`#1d6c96`, 5.4:1).
+Every text token is AA on both `--bg` and `--bg-raised`.
 
 ### Defects fixed
 

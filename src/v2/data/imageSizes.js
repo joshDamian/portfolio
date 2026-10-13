@@ -12,7 +12,7 @@
 --------------------------------------------------------------------------- */
 
 export const CARD_SIZES = {
-  "/project-images/useazza-updated.png": [3840, 2160],
+  "/project-images/useazza-framed.png": [4320, 2700],
   "/project-images/globachain-merchant/cover.jpeg": [5088, 3248],
   "/project-images/globachain-ramps-widget.png": [2560, 1600],
   "/project-images/taas.png": [2150, 1598],

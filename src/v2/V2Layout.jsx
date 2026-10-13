@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { v2Routes } from "./config";
-import { v1Path } from "../constants/paths";
 import { MY_EMAIL } from "../constants/strings";
 import "./v2.css";
 
@@ -44,7 +43,6 @@ export default function V2Layout() {
       <header className="nav">
         <div className="nav__inner">
           <NavLink className="brand" to={v2Routes.home}>
-            <span className="brand__dot" aria-hidden="true" />
             Joshua Avoaja
           </NavLink>
 
@@ -83,7 +81,6 @@ export default function V2Layout() {
         <div className="wrap">
           <div className="footer__inner">
             <NavLink className="brand" to={v2Routes.home}>
-              <span className="brand__dot" aria-hidden="true" />
               Joshua Avoaja
             </NavLink>
             <nav className="footer__links" aria-label="Elsewhere">
@@ -104,10 +101,6 @@ export default function V2Layout() {
             <span>Software developer — Nigeria</span>
             <span className="footer__meta">
               <a href={`mailto:${MY_EMAIL}`}>{MY_EMAIL}</a>
-              {/* The only pointer to v1. Discreet on purpose: the bare paths are
-                  the real site now, and a version banner up top would say
-                  otherwise. See src/v2/README.md for retiring v1 entirely. */}
-              <NavLink to={v1Path()}>Previous version</NavLink>
             </span>
           </div>
         </div>

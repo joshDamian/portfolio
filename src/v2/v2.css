@@ -11,28 +11,37 @@
    =========================================================================== */
 
 .v2-root {
-  /* Surfaces — near-black rather than #000: pure black halates on OLED. */
-  --bg: #08090a;
-  --bg-raised: #101113;
-  --surface: rgba(255, 255, 255, 0.024);
-  --surface-hover: rgba(255, 255, 255, 0.045);
-  --line: rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.18);
+  /* Clear Sky (ported from public/pinboard-lab). A pale sky that fades into
+     paper; cards in soft paper rather than pure white. Contrast ratios are
+     measured against --bg / --bg-raised. */
+  --bg: #f2f8fb;
+  --bg-raised: #fbfcf9;
+  --surface: rgba(12, 34, 48, 0.035);
+  --surface-hover: rgba(12, 34, 48, 0.06);
+  --line: rgba(12, 34, 48, 0.1);
+  --line-strong: rgba(12, 34, 48, 0.22);
 
-  /* Text — all values measured AA or better on --bg (see prototype README) */
-  --text: #f2f4f5;   /* 18.06:1 */
-  --text-2: #b6bcc2; /* 10.40:1 */
-  --text-3: #8b9298; /*  6.32:1 */
+  /* Text — all AA or better on both grounds */
+  --text: #0c2230;   /* 15.2:1 */
+  --text-2: #39505f; /*  7.9:1 */
+  --text-3: #587080; /*  4.9:1 */
 
-  /* v1 palette, kept */
-  --accent: #87ceeb;      /* 11.44:1 on --bg */
-  --accent-ink: #06202b;  /* on skyblue: 9.65:1 (white is 1.74:1) */
-  --accent-soft: rgba(135, 206, 235, 0.1);
-  --grad-a: #1b2845;
-  --grad-b: #274060;
+  /* Sky blue is a FILL. As text on this ground it's ~1.7:1, so anything that
+     has to be read — or seen, like focus rings (3:1 non-text) — uses the
+     deeper --accent-text instead. */
+  --accent: #87ceeb;
+  --accent-ink: #06202b;      /* on skyblue: 9.65:1 */
+  --accent-text: #1d6c96;     /* 5.4:1 */
+  --accent-soft: rgba(135, 206, 235, 0.28);
 
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Translucent chrome over content (nav, mobile menu, image tags) */
+  --chrome: rgba(242, 248, 251, 0.8);
+  --chrome-solid: rgba(242, 248, 251, 0.97);
+
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Small labels — eyebrows, dates, meta keys — set like catalogue stamps. */
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   --step--2: clamp(0.7rem, 0.69rem + 0.05vw, 0.74rem);
   --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.87rem);
@@ -69,7 +78,7 @@
   text-rendering: optimizeLegibility;
 }
 
-/* One restrained gradient wash, replacing v1's gradient-on-every-surface. */
+/* One restrained wash: the sky, fading into the page. */
 .v2-root::before {
   content: "";
   position: fixed;
@@ -77,8 +86,8 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(900px 620px at 12% -12%, rgba(39, 64, 96, 0.6), transparent 68%),
-    radial-gradient(680px 480px at 100% -4%, rgba(135, 206, 235, 0.06), transparent 62%);
+    radial-gradient(1200px 520px at 15% -10%, #bfe6f7 0%, rgba(191, 230, 247, 0) 70%),
+    radial-gradient(900px 480px at 95% 0%, #d9f0fa 0%, rgba(217, 240, 250, 0) 70%);
 }
 
 .v2-root > * { position: relative; z-index: 1; }
@@ -86,7 +95,7 @@
 /* ---------- Accessibility ----------------------------------------------- */
 
 .v2-root :where(a, button, input, textarea, select, [tabindex]):focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-text);
   outline-offset: 3px;
   border-radius: var(--r-sm);
 }
@@ -126,7 +135,7 @@
   top: 0;
   z-index: 50;
   border-bottom: 1px solid var(--line);
-  background: rgba(8, 9, 10, 0.76);
+  background: var(--chrome);
   backdrop-filter: blur(14px) saturate(150%);
   -webkit-backdrop-filter: blur(14px) saturate(150%);
 }
@@ -147,16 +156,11 @@
   gap: 0.6rem;
   font-family: var(--font-display);
   font-size: var(--step-1);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.01em;
   color: var(--text);
   text-decoration: none;
   white-space: nowrap;
-}
-.v2-root .brand__dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
 .v2-root .nav__links {
@@ -191,7 +195,7 @@
 .v2-root .navlink:hover { color: var(--text); }
 .v2-root .navlink:hover::after,
 .v2-root .navlink[aria-current="page"]::after { transform: scaleX(1); }
-.v2-root .navlink[aria-current="page"] { color: var(--accent); }
+.v2-root .navlink[aria-current="page"] { color: var(--accent-text); }
 
 .v2-root .nav__toggle {
   display: none;
@@ -205,7 +209,7 @@
   font: inherit;
   font-size: var(--step--1);
 }
-.v2-root .nav__toggle:hover { border-color: var(--accent); color: var(--accent); }
+.v2-root .nav__toggle:hover { border-color: var(--accent-text); color: var(--accent-text); }
 
 @media (max-width: 780px) {
   .v2-root .nav__toggle { display: block; }
@@ -218,7 +222,7 @@
     gap: 0;
     margin: 0;
     padding: var(--s2) var(--gutter) var(--s4);
-    background: rgba(8, 9, 10, 0.97);
+    background: var(--chrome-solid);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
   }
@@ -239,7 +243,7 @@
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-text);
   margin: 0 0 var(--s4);
 }
 
@@ -288,7 +292,7 @@
 
 .v2-root .prose { color: var(--text-2); max-width: 68ch; }
 .v2-root .prose p { margin: 0 0 var(--s4); text-wrap: pretty; }
-.v2-root .prose a { color: var(--accent); }
+.v2-root .prose a { color: var(--accent-text); }
 
 /* ---------- Buttons ----------------------------------------------------- */
 
@@ -309,7 +313,7 @@
   transition: border-color 0.18s var(--ease), background-color 0.18s var(--ease),
               color 0.18s var(--ease), transform 0.18s var(--ease);
 }
-.v2-root .btn:hover { border-color: var(--accent); color: var(--accent); }
+.v2-root .btn:hover { border-color: var(--accent-text); color: var(--accent-text); }
 .v2-root .btn:active { transform: translateY(1px); }
 
 /* Dark ink on skyblue: 9.65:1. White on skyblue is 1.74:1 — the exact bug
@@ -320,14 +324,14 @@
   color: var(--accent-ink);
   font-weight: 600;
 }
-.v2-root .btn--accent:hover { background: #a6dcef; color: var(--accent-ink); }
+.v2-root .btn--accent:hover { background: #74c3e4; color: var(--accent-ink); }
 
 .v2-root .btn--quiet {
   border-color: transparent;
   color: var(--text-2);
   padding-inline: 0.4rem;
 }
-.v2-root .btn--quiet:hover { color: var(--accent); }
+.v2-root .btn--quiet:hover { color: var(--accent-text); }
 
 /* ---------- Hero -------------------------------------------------------- */
 
@@ -337,6 +341,129 @@
    .v2-root scope, so that rule reaches in here. Nothing in this hero relies on
    inherited colour, but this makes it explicit and stops a future App.css edit
    from leaking through. */
+/* Two columns on wide screens: the words, and a small pinned cluster. */
+.v2-root .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s7);
+}
+@media (max-width: 860px) {
+  .v2-root .hero { grid-template-columns: 1fr; gap: var(--s6); }
+}
+
+/* The one expressive word: italic serif, deeper sky, a hand-drawn underline. */
+.v2-root .hero__em {
+  position: relative;
+  display: inline-block;
+  font-style: italic;
+  color: var(--accent-text);
+  padding-right: 0.06em;
+}
+.v2-root .hero__scribble {
+  position: absolute;
+  left: -2%; right: -2%; bottom: -0.12em;
+  width: 104%; height: 0.32em;
+  overflow: visible;
+}
+.v2-root .hero__scribble path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: v2-draw 0.9s 0.5s var(--ease) forwards;
+}
+@keyframes v2-draw { to { stroke-dashoffset: 0; } }
+
+/* ---- Hero pins: the pin board in miniature ---- */
+.v2-root .hero-pins {
+  position: relative;
+  width: 300px;
+  height: 340px;
+  flex: none;
+}
+.v2-root .hero-pin {
+  position: absolute;
+  margin: 0;
+  background: var(--bg-raised);
+  border-radius: 6px;
+  box-shadow: 0 18px 34px -18px rgba(18, 52, 74, 0.45), 0 4px 10px -4px rgba(18, 52, 74, 0.2);
+  transform: rotate(var(--r));
+  transition: transform 0.5s var(--ease);
+  animation: v2-settle 0.8s var(--ease) both;
+}
+.v2-root .hero-pin:hover { transform: rotate(calc(var(--r) * -0.6)) translateY(-4px); }
+/* washi tape */
+.v2-root .hero-pin::before {
+  content: "";
+  position: absolute;
+  top: -11px; left: 50%;
+  width: 78px; height: 22px;
+  transform: translateX(-50%) rotate(var(--tr, -4deg));
+  background: rgba(135, 206, 235, 0.62);
+  mix-blend-mode: multiply;
+  clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
+}
+@keyframes v2-settle {
+  from { opacity: 0; transform: translateY(14px) rotate(calc(var(--r) * 2.5)); }
+}
+
+.v2-root .hero-pin--photo {
+  --r: -4deg;
+  top: 0; left: 0;
+  width: 220px;
+  padding: 0.6rem 0.6rem 0;
+}
+.v2-root .hero-pin--photo img {
+  width: 100%; height: auto;
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: linear-gradient(160deg, #cdeefb, #e9f6fb);
+  display: block;
+}
+.v2-root .hero-pin--photo figcaption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--text-2);
+  padding: 0.5rem 0.2rem 0.7rem;
+  text-align: center;
+}
+
+.v2-root .hero-pin--clock {
+  --r: 5deg; --tr: 6deg;
+  right: 0; bottom: 6px;
+  width: 168px;
+  padding: 1rem 1rem 0.9rem;
+  display: grid;
+  gap: 0.15rem;
+  animation-delay: 0.15s;
+}
+.v2-root .hero-pin__k {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.v2-root .hero-pin__time {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+.v2-root .hero-pin__guess { font-size: var(--step--1); color: var(--accent-text); }
+
+@media (max-width: 860px) {
+  .v2-root .hero-pins { width: 100%; max-width: 340px; height: 270px; }
+  .v2-root .hero-pin--photo { width: 180px; }
+  .v2-root .hero-pin--clock { width: 156px; }
+  .v2-root .hero-pin__time { font-size: 2.2rem; }
+}
+
 .v2-root .hero__actions { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s6); }
 .v2-root .hero__now {
   display: flex; align-items: center; gap: 0.6rem;
@@ -373,8 +500,8 @@
 .v2-root .chip:hover { color: var(--text); border-color: var(--line-strong); }
 .v2-root .chip[aria-pressed="true"] {
   background: var(--accent-soft);
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--accent-text);
+  color: var(--accent-text);
 }
 
 /* ---------- Year rail + project cards ----------------------------------- */
@@ -481,7 +608,7 @@
   gap: 0.4rem;
   font-size: var(--step--1);
   font-weight: 500;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 .v2-root .card__cta svg { transition: transform 0.2s var(--ease); }
 .v2-root .card:hover .card__cta svg { transform: translate(2px, -2px); }
@@ -496,7 +623,7 @@
   text-transform: uppercase;
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
-  background: rgba(8, 9, 10, 0.72);
+  background: var(--chrome);
   border: 1px solid var(--line);
   color: var(--text-2);
   backdrop-filter: blur(6px);
@@ -506,7 +633,7 @@
 .v2-root .card__link { color: inherit; text-decoration: none; }
 .v2-root .card__link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .v2-root .card:has(.card__link:focus-visible) {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-text);
   outline-offset: 3px;
 }
 
@@ -529,7 +656,7 @@
 .v2-root .case__cover::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(8, 9, 10, 0.55), transparent 55%);
+  background: linear-gradient(to top, rgba(12, 34, 48, 0.14), transparent 45%);
   pointer-events: none;
 }
 
@@ -613,8 +740,8 @@
   height: 100%;
 }
 .v2-root .lightbox::backdrop {
-  background: rgba(4, 5, 6, 0.86);
-  backdrop-filter: blur(4px);
+  background: rgba(226, 240, 247, 0.94);
+  backdrop-filter: blur(6px);
 }
 .v2-root .lightbox__inner {
   display: flex;
@@ -669,14 +796,14 @@
   color: var(--text);
   transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
 }
-.v2-root .pager a:hover { border-color: var(--accent); background: var(--surface); }
+.v2-root .pager a:hover { border-color: var(--accent-text); background: var(--surface); }
 .v2-root .pager__dir {
   font-size: var(--step--2);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-3);
 }
-.v2-root .pager a:hover .pager__dir { color: var(--accent); }
+.v2-root .pager a:hover .pager__dir { color: var(--accent-text); }
 .v2-root .pager__name { font-family: var(--font-display); font-size: var(--step-1); }
 .v2-root .pager__next { text-align: right; align-items: flex-end; }
 
@@ -696,7 +823,7 @@
 }
 .v2-root .footer__links { display: flex; flex-wrap: wrap; gap: var(--s4); }
 .v2-root .footer a { color: var(--text-2); text-decoration: none; font-size: var(--step--1); }
-.v2-root .footer a:hover { color: var(--accent); }
+.v2-root .footer a:hover { color: var(--accent-text); }
 .v2-root .footer__note {
   margin-top: var(--s5);
   padding-top: var(--s4);
@@ -809,10 +936,10 @@
   max-width: 68ch;
 }
 
-.v2-root .xp__ico { flex: none; margin-top: 0.2em; color: var(--accent); }
+.v2-root .xp__ico { flex: none; margin-top: 0.2em; color: var(--accent-text); }
 
 .v2-root .xp__link {
-  color: var(--accent);
+  color: var(--accent-text);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -852,7 +979,7 @@
 }
 
 .v2-root .contact__email { margin: 0; display: flex; flex-direction: column; gap: 0.3rem; }
-.v2-root .contact__email a { color: var(--accent); text-decoration: none; word-break: break-all; }
+.v2-root .contact__email a { color: var(--accent-text); text-decoration: none; word-break: break-all; }
 .v2-root .contact__email a:hover { text-decoration: underline; }
 
 .v2-root .contact__socials {
@@ -867,7 +994,7 @@
   text-decoration: none;
   font-size: var(--step--1);
 }
-.v2-root .contact__socials a:hover { color: var(--accent); }
+.v2-root .contact__socials a:hover { color: var(--accent-text); }
 
 .v2-root .form { display: grid; gap: var(--s5); align-content: start; }
 
@@ -924,7 +1051,7 @@
   color: var(--text-3);
   max-width: 40ch;
 }
-.v2-root .form__note[data-state="error"] { color: var(--accent); }
+.v2-root .form__note[data-state="error"] { color: var(--accent-text); }
 
 .v2-root .form__actions {
   display: flex;
@@ -938,7 +1065,7 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.v2-root .form__alt:hover { color: var(--accent); }
+.v2-root .form__alt:hover { color: var(--accent-text); }
 
 /* ---------- Scroll reveals --------------------------------------------- */
 
@@ -956,5 +1083,23 @@
   .v2-root .btn:active { transform: none; }
   .v2-root .card:hover .card__media img { transform: none; }
   .v2-root .hero__pulse { animation: none; }
+  .v2-root .hero-pin { animation: none; transition: none; }
+  .v2-root .hero__scribble path { animation: none; stroke-dashoffset: 0; }
   .v2-root * { transition-duration: 0.01ms !important; }
 }
+
+/* ---------- Clear Sky: small labels in mono ------------------------------ */
+/* Eyebrows, dates and meta keys read as catalogue stamps; the serif is kept
+   for what's worth reading slowly, Geist for everything else. */
+.v2-root .eyebrow,
+.v2-root .meta__k,
+.v2-root .pager__dir,
+.v2-root .xp__when,
+.v2-root .card__kind {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+
+/* The page behind .v2-root (overscroll, iOS bounce) matches the sky, not
+   index.html's black, which stays for v1. */
+body:has(.v2-root) { background-color: #f2f8fb !important; }

@@ -5,8 +5,10 @@
    V2_BASE is still the single switch, so the previous arrangement is one edit
    away: set it back to "/v2" and point v1's prefix at "" instead.
 
-   To retire v1 entirely: delete the v1 route branch in App.jsx, delete
-   src/constants/paths.js and the /v1 footer link, then fold v2 into the app —
+   v2 no longer links to v1 anywhere; it is reachable only by typing /v1.
+
+   To retire v1 entirely: delete the v1 route branch in App.jsx and
+   src/constants/paths.js, then fold v2 into the app —
    drop the .v2-root prefix from v2.css, move its tokens to :root, and merge it
    into index.css.
 --------------------------------------------------------------------------- */

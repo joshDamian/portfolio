@@ -3,6 +3,7 @@ import projects from "../../data/projects.json";
 import { v2Routes } from "../config";
 import Reveal from "../components/Reveal";
 import ProjectCard, { ArrowR } from "../components/ProjectCard";
+import HeroPins from "../components/HeroPins";
 
 export default function Home() {
   const recent = projects.slice(0, 3);
@@ -10,30 +11,48 @@ export default function Home() {
   return (
     <>
       <section className="hero wrap">
-        <span className="eyebrow">Software developer</span>
-        {/* The space after <br /> is load-bearing: without it the text
+        <div className="hero__text">
+          <span className="eyebrow">Software developer</span>
+          {/* The space after <br /> is load-bearing: without it the text
             alternative reads "Hi, I'm Josh.I build..." — a line break
             contributes no whitespace. */}
-        <h1 className="display">
-          Hi, I&apos;m Josh.
-          <br /> I build software people actually use.
-        </h1>
-        <p className="lead" style={{ marginTop: "var(--s5)" }}>
-          Design-driven development, and a long-running interest in how systems
-          work. Currently building stablecoin infrastructure for everyday people.
-        </p>
-        <div className="hero__actions">
-          <Link className="btn btn--accent" to={v2Routes.projects}>
-            View projects <ArrowR />
-          </Link>
-          <Link className="btn" to={v2Routes.about}>
-            More about me
-          </Link>
+          <h1 className="display">
+            Hi, I&apos;m Josh.
+            <br /> I build software people{" "}
+            <span className="hero__em">
+              actually
+              {/* hand-drawn underline — decoration only */}
+              <svg
+                className="hero__scribble"
+                viewBox="0 0 200 18"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M3 12 C 40 4, 80 4, 118 9 S 176 15, 197 6" />
+              </svg>
+            </span>{" "}
+            use.
+          </h1>
+          <p className="lead" style={{ marginTop: "var(--s5)" }}>
+            Design-driven development, and a long-running interest in how
+            systems work. Currently building stablecoin infrastructure for
+            everyday people.
+          </p>
+          <div className="hero__actions">
+            <Link className="btn btn--accent" to={v2Routes.projects}>
+              View projects <ArrowR />
+            </Link>
+            <Link className="btn" to={v2Routes.about}>
+              More about me
+            </Link>
+          </div>
+          <p className="hero__now">
+            <span className="hero__pulse" aria-hidden="true" />
+            Co-Founder &amp; CTO at UseAzza
+          </p>
         </div>
-        <p className="hero__now">
-          <span className="hero__pulse" aria-hidden="true" />
-          Co-Founder &amp; CTO at UseAzza
-        </p>
+        <HeroPins />
       </section>
 
       <Reveal className="section wrap">
