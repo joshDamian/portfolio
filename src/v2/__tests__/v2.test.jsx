@@ -5,7 +5,7 @@ import App from "../../App";
 import projects from "../../data/projects.json";
 import { EXPERIENCE } from "../data/experience";
 import PINS from "../data/pins";
-import { TYPE_LABEL } from "../components/PinCard";
+import { TYPE_LABEL, pinLabel } from "../components/PinCard";
 import { yearOf, yearsOf, mailtoHref } from "../lib/format";
 import { MY_EMAIL } from "../../constants/strings";
 
@@ -325,13 +325,19 @@ describe("v2 pinboard", () => {
     );
   });
 
+  it("gives every pin a distinct accessible name, even with a shared caption", () => {
+    const names = PINS.map(pinLabel);
+    expect(new Set(names).size).toBe(PINS.length);
+    expect(PINS.filter((p) => p.title === "Hike, Abuja")).toHaveLength(2);
+  });
+
   it("renders every pin with a readable, openable label", () => {
     renderAt("/pinboard");
     const items = document.querySelectorAll(".board__item");
     expect(items).toHaveLength(PINS.length);
     PINS.forEach((pin) => {
       expect(
-        screen.getByRole("button", { name: `${pin.kind || TYPE_LABEL[pin.type]}: ${pin.title}. Show details` })
+        screen.getByRole("button", { name: pinLabel(pin) })
       ).toBeInTheDocument();
     });
   });

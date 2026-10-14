@@ -12,6 +12,13 @@ export const TYPE_LABEL = {
   score: "Match",
 };
 
+/* Photos can share a caption (two shots from one hike), so a photo's button
+   also carries its alt text: every pin keeps a distinct accessible name. */
+export function pinLabel(pin) {
+  const what = pin.image?.alt ? `${pin.title} (${pin.image.alt})` : pin.title;
+  return `${pin.kind || TYPE_LABEL[pin.type]}: ${what}. Show details`;
+}
+
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 export function pinDate(ym) {
   if (!ym) return "";

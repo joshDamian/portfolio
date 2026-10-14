@@ -168,8 +168,9 @@ until a photo pin has one, it falls back to a drawn `scene` from
 3. **`shiga-digital` repeats its cover as `showcase[0]`** in the data. v2 skips
    it; the data should not contain it.
 4. **Content edits need sign-off** — the "platform. now," fix above.
-5. **`og:url` is `https://www.devjosh.me/`**, which is now correct for v2 and
-   wrong for `/v1` (v1's pages share v2's social card). Moot once v1 goes.
+5. **`og:url` is `https://joshuaavoaja.netlify.app/`** (the old devjosh.me
+   domain is gone). Swap the four absolute URLs in `index.html` if a custom
+   domain is added. `/v1` shares v2's social card; moot once v1 goes.
 6. **The contact form only really submits on Netlify.** Off Netlify the POST
    fails by design and the mailto link takes over. Worth switching to Netlify's
    dashboard notifications so a submission actually reaches an inbox.

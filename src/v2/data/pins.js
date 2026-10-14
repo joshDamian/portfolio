@@ -295,7 +295,7 @@ const OFFLINE = [
     id: "abuja-hike",
     type: "photo",
     print: "mono",
-    title: "On the hike",
+    title: "Hike, Abuja",
     image: { src: "/pin-images/abuja-hike.jpg", width: 960, height: 1200, alt: "Josh in a cap on a hilltop, with the city spread out below" },
     place: "Abuja",
     date: "2025-11",

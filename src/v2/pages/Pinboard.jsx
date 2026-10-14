@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import PINS from "../data/pins";
-import { PinBody, TYPE_LABEL } from "../components/PinCard";
+import { PinBody, pinLabel } from "../components/PinCard";
 import PinDetail from "../components/PinDetail";
 
 /* Stable pseudo-random in [0, 1) from a string, so each pin's tilt, jitter and
@@ -162,7 +162,7 @@ export default function Pinboard() {
                   <button
                     className="pin__open"
                     type="button"
-                    aria-label={`${pin.kind || TYPE_LABEL[pin.type]}: ${pin.title}. Show details`}
+                    aria-label={pinLabel(pin)}
                     aria-haspopup="dialog"
                     onClick={() => openPin(pin)}
                   />
