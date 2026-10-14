@@ -285,7 +285,6 @@ const OFFLINE = [
   {
     id: "abuja-hike-view",
     type: "photo",
-    print: "cyan",
     title: "Hike, Abuja",
     image: { src: "/pin-images/abuja-hike-view.jpg", width: 1200, height: 900, alt: "Wide rocky hilltop with scattered trees and the city in the distance" },
     place: "Abuja",
